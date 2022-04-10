@@ -1,0 +1,7 @@
+services:
+    moneylink-backend:
+        ports: 
+            - 3001:3001
+        build: 
+            context: "./moneylink-backend"
+            dockerfile: ".docker/Dockerfile"

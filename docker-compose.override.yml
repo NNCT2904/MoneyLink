@@ -1,0 +1,25 @@
+services:
+  moneylink-backend:
+    build:
+      target: dev
+    image: moneylinkbackend:development
+    links:
+      - moneylink-db
+    depends_on:
+      - moneylink-db
+    container_name: moneylinkbackend_development
+    restart: unless-stopped
+    volumes:
+      - ./moneylink-backend:/src
+# experimental Mongo docker image
+  # moneylink-db:
+  #   image: mongo:latest
+  #   container_name: moneylink_db
+  #   restart: unless-stopped
+  #   environment:
+  #     - MONGO_INITDB_ROOT_USERNAME=root
+  #     - MONGO_INITDB_ROOT_PASSWORD=root
+  #   volumes:
+  #     - ./db:/data/db
+  #   ports:
+  #     - 27017:27017
