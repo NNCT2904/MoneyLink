@@ -1,7 +1,6 @@
-import exp from "constants";
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-const  mongoConnect = async (uri: string | undefined) => {
+const  mongoConnect = async (uri) => {
   try {
     if (!uri) throw new Error("MongoDB URI is required");
 
@@ -18,4 +17,4 @@ const  mongoConnect = async (uri: string | undefined) => {
   }
 };
 
-export default mongoConnect;
+module.exports = mongoConnect;

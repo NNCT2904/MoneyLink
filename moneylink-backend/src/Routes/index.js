@@ -1,6 +1,6 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import { ExampleController } from './Controllers';
+const express = require('express');
+const bodyParser = require('body-parser');
+const { ExampleController } = require('./Controllers');
 
 const appRouter = express.Router();
 
@@ -14,4 +14,4 @@ appRouter.get('/getAllExamples', ExampleController.getAllExamples);
 appRouter.put('/updateExample', ExampleController.updateExample);
 appRouter.delete('/deleteExample', ExampleController.deleteExample);
 
-export default appRouter;
+module.exports = appRouter;

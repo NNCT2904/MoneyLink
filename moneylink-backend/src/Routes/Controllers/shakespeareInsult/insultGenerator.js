@@ -157,7 +157,7 @@ const nouns = [
   "wagtail",
 ];
 
-export const quotes = [
+const quotes = [
   "A most notable coward, an infinite and endless liar, an hourly promise breaker, the owner of no one good quality.",
   "Away, you starvelling, you elf-skin, you dried neat’s-tongue, bull’s-pizzle, you stock-fish!",
   "Away, you three-inch fool!",
@@ -215,26 +215,28 @@ export const quotes = [
   "You have such a February face, So full of frost, of storm, and cloudiness.",
 ];
 
-const getRandomInt = (min: number, max: number) => {
+const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 };
 
-export const randomCreate = () => {
+const randomCreate = () => {
   const verb = verbs[getRandomInt(0, verbs.length)];
   const adj = adjectives[getRandomInt(0, adjectives.length)];
   const noun = nouns[getRandomInt(0, nouns.length)];
   return `Thou ${verb} ${adj} ${noun}.`;
 };
 
-export const randomQuote = () => {
+const randomQuote = () => {
   return quotes[getRandomInt(0, quotes.length)];
 };
 
-export const randomInsultGenerator = () => {
+const randomInsultGenerator = () => {
   const source = getRandomInt(0, 1);
 
   // Randomly pick insult from 2 sources
   return source == 1 ? randomCreate() : randomQuote();
 };
+
+module.exports = randomInsultGenerator;
