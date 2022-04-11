@@ -2,7 +2,7 @@ FROM node:16.14-buster-slim as base
 WORKDIR /src
 
 FROM base as dev
-COPY package.json yarn.lock tsconfig.json ./
+COPY package.json yarn.lock ./
 RUN yarn install --non-interactive
 
 COPY . .
