@@ -1,4 +1,4 @@
-const { Example, ExampleSchema } = require('../../../Models');
+const { Example, ExampleSchema } = require('../../Models');
 
 const createExample = async (req, res) => {
   const { name } = req.body;
