@@ -4,6 +4,7 @@
   - [Requirements](#requirements)
   - [Onboarding](#onboarding)
     - [Clone this repo](#clone-this-repo)
+    - [Create the config file](#create-the-config-file)
     - [Install node dependencies](#install-node-dependencies)
     - [Launch Application for development](#launch-application-for-development)
   - [Available Scripts](#available-scripts)
@@ -60,7 +61,7 @@ Or launch the application with docker compose
 docker-compose up app
 ```
 
-The Application will be launched in [localhost:3000](http://localhost:3000/ "[docker compose](http://localhost:3000/)"). Saving any changes will trigger `nodemon` to hot reload the application, no need to stop.
+The Application will be launched in [localhost:3001](http://localhost:3001/ "[docker compose](http://localhost:3001/)"). Saving any changes will trigger `nodemon` to hot reload the application, no need to stop.
 ## Available Scripts
 
 In the project directory, you can run:

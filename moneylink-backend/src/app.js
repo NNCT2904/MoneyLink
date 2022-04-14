@@ -4,7 +4,7 @@ const cors = require('cors');
 const appRouter = require('./Routes');
 const mongoConnect = require('./mongoConnect');
 
-const PORT = 3000;
+const PORT = 3001;
 
 const app = express();
 
