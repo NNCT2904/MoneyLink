@@ -7,6 +7,7 @@
     - [Create the config file](#create-the-config-file)
     - [Install node dependencies](#install-node-dependencies)
     - [Launch Application for development](#launch-application-for-development)
+  - [Testing the backend](#testing-the-backend)
   - [Available Scripts](#available-scripts)
     - [`yarn start`](#yarn-start)
     - [`yarn test`](#yarn-test)
@@ -58,10 +59,17 @@ yarn start
 Or launch the application with docker compose
 ```shell
 # In the Root folder
-docker-compose up app
+docker-compose up moneylink-backend
 ```
 
 The Application will be launched in [localhost:3001](http://localhost:3001/ "[docker compose](http://localhost:3001/)"). Saving any changes will trigger `nodemon` to hot reload the application, no need to stop.
+## Testing the backend
+First [launch the application](#launch-application-for-development). Then run the test command
+```shell
+# In the backend folder
+yarn test
+```
+This command will search for any `test.js` file in the `src` folder and pass to `mocha` for testing.
 ## Available Scripts
 
 In the project directory, you can run:
