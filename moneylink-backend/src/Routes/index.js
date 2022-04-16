@@ -1,13 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { ExampleController, HouseholdController } = require('../Controllers');
+const { ExampleController, HouseholdController, BillController } = require('../Controllers');
 
 const appRouter = express.Router();
 
 appRouter.use(bodyParser.json());
 
 // Declare APIs here
-appRouter.get('/ping', (req, res) => {res.json({message: 'pong'})});
+appRouter.get('/ping', (req, res) => {
+  res.json({ message: 'pong' });
+});
 // Example APIs
 appRouter.post('/createExample', ExampleController.createExample);
 appRouter.get('/findExamples', ExampleController.findExamples);
@@ -22,5 +24,10 @@ appRouter.get('/getHousehold', HouseholdController.getHousehold);
 appRouter.put('/updateHousehold', HouseholdController.updateHousehold);
 appRouter.delete('/deleteHousehold', HouseholdController.deleteHousehold);
 
+// Bill APIs
+appRouter.post('/createBill', BillController.createBill);
+appRouter.get('/getBill', BillController.getBill);
+appRouter.put('/updateBill', BillController.updateBill);
+appRouter.delete('/deleteBill', BillController.deleteBill);
 
 module.exports = appRouter;
