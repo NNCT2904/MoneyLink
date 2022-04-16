@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { ExampleController, HouseholdController, BillController } = require('../Controllers');
+const { ExampleController, HouseholdController, BillController, UserController } = require('../Controllers');
 
 const appRouter = express.Router();
 
@@ -29,5 +29,11 @@ appRouter.post('/createBill', BillController.createBill);
 appRouter.get('/getBill', BillController.getBill);
 appRouter.put('/updateBill', BillController.updateBill);
 appRouter.delete('/deleteBill', BillController.deleteBill);
+
+// User APIs
+appRouter.post('/createUser', UserController.createUser);
+appRouter.get('/getUser', UserController.getUser);
+appRouter.put('/updateUser', UserController.updateUser);
+appRouter.delete('/deleteUser', UserController.deleteUser);
 
 module.exports = appRouter;
