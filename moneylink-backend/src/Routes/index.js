@@ -19,21 +19,21 @@ appRouter.put('/updateExample', ExampleController.updateExample);
 appRouter.delete('/deleteExample', ExampleController.deleteExample);
 
 // Household APIs
-appRouter.post('/createHousehold', HouseholdController.createHousehold);
-appRouter.get('/getHousehold', HouseholdController.getHousehold);
-appRouter.put('/updateHousehold', HouseholdController.updateHousehold);
-appRouter.delete('/deleteHousehold', HouseholdController.deleteHousehold);
+appRouter.post('/household', HouseholdController.createHousehold);
+appRouter.get('/household', HouseholdController.getHousehold);
+appRouter.put('/household', HouseholdController.updateHousehold);
+appRouter.delete('/household', HouseholdController.deleteHousehold);
 
 // Bill APIs
-appRouter.post('/createBill', BillController.createBill);
-appRouter.get('/getBill', BillController.getBill);
-appRouter.put('/updateBill', BillController.updateBill);
-appRouter.delete('/deleteBill', BillController.deleteBill);
+appRouter.post('/bill', BillController.createBill);
+appRouter.get('/bill', BillController.getBill);
+appRouter.put('/bill', BillController.updateBill);
+appRouter.delete('/bill', BillController.deleteBill);
 
 // User APIs
-appRouter.post('/createUser', UserController.createUser);
-appRouter.get('/getUser', UserController.getUser);
-appRouter.put('/updateUser', UserController.updateUser);
-appRouter.delete('/deleteUser', UserController.deleteUser);
+appRouter.post('/user', UserController.createUser);
+appRouter.get('/user', UserController.getUser);
+appRouter.put('/user', UserController.updateUser);
+appRouter.delete('/user', UserController.deleteUser);
 
 module.exports = appRouter;
