@@ -1,3 +1,4 @@
+const { expect } = require('chai');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 
@@ -15,16 +16,16 @@ describe('Bill controller test', () => {
   it('Should be able to create a bill', (done) => {
     chai
       .request(url)
-      .post('/api/createBill')
+      .post('/api/bill')
       .send({
         name: 'Test bill',
         amount: 100,
       })
       .end((err, res) => {
         billObject = res.body;
-        res.should.have.status(201);
-        res.body.should.have.property('name').eql('Test bill');
-        res.body.should.have.property('amount').eql(100);
+        expect(res).to.have.status(201);
+        expect(res.body).to.have.property('name').eql('Test bill');
+        expect(res.body).to.have.property('amount').eql(100);
         done();
       });
   });
@@ -32,12 +33,12 @@ describe('Bill controller test', () => {
   it('Should be able to get a bill on _id', (done) => {
     chai
       .request(url)
-      .get('/api/getBill')
+      .get('/api/bill')
       .send({ _id: billObject._id })
       .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.have.property('name').eql(billObject.name);
-        res.body.should.have.property('amount').eql(billObject.amount);
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('name').eql(billObject.name);
+        expect(res.body).to.have.property('amount').eql(billObject.amount);
         done();
       });
   });
@@ -45,7 +46,7 @@ describe('Bill controller test', () => {
   it('Should be able to update a bill', (done) => {
     chai
       .request(url)
-      .put('/api/updateBill')
+      .put('/api/bill')
       .send({
         _id: billObject._id,
         name: 'Test bill updated',
@@ -53,9 +54,9 @@ describe('Bill controller test', () => {
       })
       .end((err, res) => {
         billObject = res.body;
-        res.should.have.status(200);
-        res.body.should.have.property('name').eql('Test bill updated');
-        res.body.should.have.property('amount').eql(200);
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('name').eql('Test bill updated');
+        expect(res.body).to.have.property('amount').eql(200);
         done();
       });
   });
@@ -63,12 +64,12 @@ describe('Bill controller test', () => {
   it('Should be able to delete a bill', (done) => {
     chai
       .request(url)
-      .delete('/api/deleteBill')
+      .delete('/api/bill')
       .send({ _id: billObject._id })
       .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.have.property('name').eql(billObject.name);
-        res.body.should.have.property('amount').eql(billObject.amount);
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('name').eql(billObject.name);
+        expect(res.body).to.have.property('amount').eql(billObject.amount);
         done();
       });
   });
@@ -76,11 +77,11 @@ describe('Bill controller test', () => {
   it('Should not be able to get a bill after deletion', (done) => {
     chai
       .request(url)
-      .get('/api/getBill')
+      .get('/api/bill')
       .send({ _id: billObject._id })
       .end((err, res) => {
-        res.should.have.status(404);
-        res.body.should.have.property('error').eql('Bill not found');
+        expect(res).to.have.status(404);
+        expect(res.body).to.have.property('error').eql('Bill not found');
         done();
       });
   });

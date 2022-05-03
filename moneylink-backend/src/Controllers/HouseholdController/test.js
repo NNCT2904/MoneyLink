@@ -1,3 +1,4 @@
+const { expect } = require('chai');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const should = chai.should();
@@ -17,12 +18,12 @@ describe('Household controller test', () => {
   it('Should be able to create a household', (done) => {
     chai
       .request(url)
-      .post('/api/createHousehold')
+      .post('/api/household')
       .send({ name: 'Test household' })
       .end((err, res) => {
         householdObject = res.body;
-        res.should.have.status(201);
-        res.body.should.have.property('name').eql('Test household');
+        expect(res).to.have.status(201);
+        expect(res.body).to.have.property('name').eql('Test household');
         done();
       });
   });
@@ -30,12 +31,11 @@ describe('Household controller test', () => {
   it('Should be able to get a household on _id', (done) => {
     chai
       .request(url)
-      .get('/api/getHousehold')
+      .get('/api/household')
       .send({ _id: householdObject._id })
       .end((err, res) => {
-        householdObject = res.body;
-        res.should.have.status(200);
-        res.body.should.have.property('name').eql(householdObject.name);
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('name').eql(householdObject.name);
         done();
       });
   });
@@ -43,12 +43,12 @@ describe('Household controller test', () => {
   it('Should be able to update household detail', (done) => {
     chai
       .request(url)
-      .put('/api/updateHousehold')
+      .put('/api/household')
       .send({ _id: householdObject._id, name: 'Updated household' })
       .end((err, res) => {
         householdObject = res.body;
-        res.should.have.status(200);
-        res.body.should.have.property('name').eql('Updated household');
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('name').eql('Updated household');
         done();
       });
   });
@@ -56,11 +56,11 @@ describe('Household controller test', () => {
   it('Should be able to delete household', (done) => {
     chai
       .request(url)
-      .delete('/api/deleteHousehold')
+      .delete('/api/household')
       .send({ _id: householdObject._id })
       .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.have.property('name').eql(householdObject.name);
+        expect(res).to.have.status(200);
+        expect(res.body).to.have.property('name').eql(householdObject.name);
         done();
       });
   });
@@ -68,11 +68,11 @@ describe('Household controller test', () => {
   it('Should not be able to get household after deletion', (done) => {
     chai
       .request(url)
-      .get('/api/getHousehold')
+      .get('/api/household')
       .send({ _id: householdObject._id })
       .end((err, res) => {
-        res.should.have.status(404);
-        res.body.should.have.property('error').eql('Household not found');
+        expect(res).to.have.status(404);
+        expect(res.body).to.have.property('error').eql('Household not found');
         done();
       });
   });
