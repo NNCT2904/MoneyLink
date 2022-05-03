@@ -1,0 +1,1055 @@
+{
+  "info": {
+    "_postman_id": "14936ff2-c14d-417a-9e92-109528c957d4",
+    "name": "Backend API",
+    "description": "This page contains documents for Money Link APIs for local development.\n\nFor more information, check out our git repository: [https://github.com/NNCT2904/MoneyLink](https://github.com/NNCT2904/MoneyLink)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [],
+      "_postman_id": "c1182b98-b244-4ade-82d7-43436a6bd9c2",
+      "description": "To be added"
+    },
+    {
+      "name": "Household Controller",
+      "item": [
+        {
+          "name": "Create",
+          "_postman_id": "873918bc-4162-4cb6-b811-f72d63ed048f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"test name\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3001/api/household",
+            "description": "The backend create a household document and store it in the database. PLease refer to example provided for an example result."
+          },
+          "response": [
+            {
+              "id": "781e140c-1ac8-489a-b3c0-544b986f15b4",
+              "name": "Create a household",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"test name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "http://localhost:3001/api/household"
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "85"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"55-XytXZcZ5qwAjouPf06/Cgq7BzZ0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 26 Apr 2022 04:29:51 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"name\": \"test name\",\n    \"members\": [],\n    \"bills\": [],\n    \"_id\": \"6267753fd30b15eab31ae4db\",\n    \"__v\": 0\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get",
+          "_postman_id": "3b7ecca3-3076-4ac1-a7f2-e55d3936cd16",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"6267753fd30b15eab31ae4db\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3001/api/household"
+          },
+          "response": [
+            {
+              "id": "f97051b5-503c-4806-8995-ff93a8c4e12a",
+              "name": "Get a household based on id",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"_id\": \"6267753fd30b15eab31ae4db\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "http://localhost:3001/api/household"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "88"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"58-NWBB6u7xECw3ZlsxELN0+EbZ6iw\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 26 Apr 2022 04:46:29 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date"
+                }
+              ],
+              "responseTime": null,
+              "body": "{\n    \"_id\": \"6267753fd30b15eab31ae4db\",\n    \"name\": \"changed name\",\n    \"members\": [],\n    \"bills\": [],\n    \"__v\": 0\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update",
+          "_postman_id": "f6f8e0c5-844d-45c6-9186-65e925316c9b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n   \"_id\": \"6267753fd30b15eab31ae4db\",\n   \"name\": \"changed name\",\n   \"members\": [],\n    \"bills\": []\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3001/api/household",
+            "description": "This API is used to change a household detail. Things can be changed are: `name` as string, `members` as array and the `bills` record as array.\n\nFor example, we can add or remove some bills or members."
+          },
+          "response": [
+            {
+              "id": "b561f315-16bc-4980-9200-502944311c8e",
+              "name": "Update the household name",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n   \"_id\": \"6267753fd30b15eab31ae4db\",\n   \"name\": \"changed name\",\n   \"members\": [],\n    \"bills\": []\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "http://localhost:3001/api/household"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "88"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"58-NWBB6u7xECw3ZlsxELN0+EbZ6iw\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 26 Apr 2022 04:40:23 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date"
+                }
+              ],
+              "responseTime": null,
+              "body": "{\n    \"_id\": \"6267753fd30b15eab31ae4db\",\n    \"name\": \"changed name\",\n    \"members\": [],\n    \"bills\": [],\n    \"__v\": 0\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete",
+          "_postman_id": "df248ac1-ba0d-483b-97ba-b4c4ea1c37ba",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"6268ed7e8b2e6327e48b0c58\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3001/api/household",
+            "description": "Pass the _id parameter to body to delete that specific household."
+          },
+          "response": [
+            {
+              "id": "9d834e9b-820f-41a0-9e57-eebbb372b7a0",
+              "name": "Delete a household based on id",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"_id\": \"6268ed7e8b2e6327e48b0c58\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "http://localhost:3001/api/household"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "97"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"61-9GOaEqX1nuO7p75tt91Y3nsKJa0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 27 Apr 2022 07:15:44 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date"
+                }
+              ],
+              "responseTime": null,
+              "body": "{\n    \"_id\": \"6268ed7e8b2e6327e48b0c58\",\n    \"name\": \"a name, delete later \",\n    \"members\": [],\n    \"bills\": [],\n    \"__v\": 0\n}"
+            }
+          ]
+        }
+      ],
+      "_postman_id": "09313e0d-5267-4beb-a3ea-ae9f6799e952",
+      "description": "These Household APIs allow to manage household."
+    },
+    {
+      "name": "Bill Controller",
+      "item": [
+        {
+          "name": "Create bill",
+          "_postman_id": "421b1118-bb0f-4a87-b894-d6b8e705aeae",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"test bill\",\n    \"amount\": 100\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3001/api/bill"
+          },
+          "response": [
+            {
+              "id": "afd9a6f0-6b32-4dcb-910e-7619f88c7d1c",
+              "name": "Create bill",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"test bill\",\n    \"amount\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "http://localhost:3001/api/bill"
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "74"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"4a-Gk4Ua5/2bTKwjmDOsDCjv8godRw\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 03 May 2022 03:05:52 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date"
+                }
+              ],
+              "responseTime": null,
+              "body": "{\n    \"name\": \"test bill\",\n    \"amount\": 100,\n    \"_id\": \"62709c1018540c08c19146e4\",\n    \"__v\": 0\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Bill",
+          "_postman_id": "ceb5d729-4383-47cf-858e-9a2faf7a6abb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"62709c1018540c08c19146e4\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3001/api/bill"
+          },
+          "response": [
+            {
+              "id": "49a23d65-07cb-424c-8c17-5d8b0fe1d238",
+              "name": "Get Bill",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"_id\": \"62709c1018540c08c19146e4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "http://localhost:3001/api/bill"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "74"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"4a-/FdY2lXE6lB93ClJHVb8qqIt2UM\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 03 May 2022 03:06:12 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"_id\": \"62709c1018540c08c19146e4\",\n    \"name\": \"test bill\",\n    \"amount\": 100,\n    \"__v\": 0\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Bill",
+          "_postman_id": "5422ed95-373b-4079-9043-19f15100d064",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"62709c1018540c08c19146e4\",\n    \"name\": \"changed name\",\n    \"amount\": 200\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3001/api/bill"
+          },
+          "response": [
+            {
+              "id": "b4adb717-cb1f-4bd1-b1e7-001248a5bc04",
+              "name": "Update Bill",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"_id\": \"62709c1018540c08c19146e4\",\n    \"name\": \"changed name\",\n    \"amount\": 200\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "http://localhost:3001/api/bill"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "77"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"4d-W047amMK3skLebGmMjfos7t0/OA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 03 May 2022 03:06:20 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"_id\": \"62709c1018540c08c19146e4\",\n    \"name\": \"changed name\",\n    \"amount\": 200,\n    \"__v\": 0\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Bill",
+          "_postman_id": "3e3f0f02-e75c-4d17-b763-1101427ae4d2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"62709c1018540c08c19146e4\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3001/api/bill"
+          },
+          "response": [
+            {
+              "id": "c7a16363-5021-448c-97de-5dfd34975113",
+              "name": "Delete Bill",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"_id\": \"62709c1018540c08c19146e4\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "http://localhost:3001/api/bill"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "77"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"4d-W047amMK3skLebGmMjfos7t0/OA\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 03 May 2022 03:07:19 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n    \"_id\": \"62709c1018540c08c19146e4\",\n    \"name\": \"changed name\",\n    \"amount\": 200,\n    \"__v\": 0\n}"
+            }
+          ]
+        }
+      ],
+      "_postman_id": "56a837cf-aa91-4e16-ac45-c0164ef28aaa"
+    },
+    {
+      "name": "User Controller",
+      "item": [
+        {
+          "name": "Create User",
+          "_postman_id": "ee697581-4155-4e84-81a3-5b0465a7b98e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"username\",\n    \"email\": \"email@example.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3001/api/user"
+          },
+          "response": [
+            {
+              "id": "29940c0e-a8aa-48b7-a06d-8ff3c550daeb",
+              "name": "Create User",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"username\": \"username\",\n    \"email\": \"email@example.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "http://localhost:3001/api/user"
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "92"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"5c-tViNFdIwuMgwSw9JpK0tOsc97QI\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 03 May 2022 03:09:28 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date"
+                }
+              ],
+              "responseTime": null,
+              "body": "{\n    \"username\": \"username\",\n    \"email\": \"email@example.com\",\n    \"_id\": \"62709ce818540c08c19146ea\",\n    \"__v\": 0\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get User",
+          "_postman_id": "a254fa29-967a-4e24-b93d-6c0f8227398b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"62709ce818540c08c19146ea\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3001/api/user"
+          },
+          "response": [
+            {
+              "id": "d8977b6b-9e5c-4d8c-9430-f2c91b7de7c4",
+              "name": "Get User",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"_id\": \"62709ce818540c08c19146ea\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "http://localhost:3001/api/user"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "92"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"5c-7InPfXnjSCy+Pojap/VgQ3heZ50\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 03 May 2022 03:10:06 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date"
+                }
+              ],
+              "responseTime": null,
+              "body": "{\n    \"_id\": \"62709ce818540c08c19146ea\",\n    \"username\": \"username\",\n    \"email\": \"email@example.com\",\n    \"__v\": 0\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update User",
+          "_postman_id": "4e4fc669-6cdb-4ab1-bd90-4e7e545f6fae",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"62709ce818540c08c19146ea\",\n    \"username\": \"change their name\",\n    \"email\": \"change@example.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3001/api/user"
+          },
+          "response": [
+            {
+              "id": "1fc64930-6580-4cd9-a979-3cb9cfd5c2d0",
+              "name": "Update User",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"_id\": \"62709ce818540c08c19146ea\",\n    \"username\": \"change their name\",\n    \"email\": \"change@example.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "http://localhost:3001/api/user"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "102"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"66-myMN412c4xa/3d2Tb7rn2sRgLn8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 03 May 2022 03:12:04 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date"
+                }
+              ],
+              "responseTime": null,
+              "body": "{\n    \"_id\": \"62709ce818540c08c19146ea\",\n    \"username\": \"change their name\",\n    \"email\": \"change@example.com\",\n    \"__v\": 0\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete User",
+          "_postman_id": "70e81b37-3b25-47e8-8d1e-ceed2c1a63c2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"_id\": \"62709ce818540c08c19146ea\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3001/api/user"
+          },
+          "response": [
+            {
+              "id": "6862fa4f-a5f1-463f-97c5-84360900be93",
+              "name": "Delete User",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"_id\": \"62709ce818540c08c19146ea\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "http://localhost:3001/api/user"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "102"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"66-myMN412c4xa/3d2Tb7rn2sRgLn8\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 03 May 2022 03:13:10 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [
+                {
+                  "expires": "Invalid Date"
+                }
+              ],
+              "responseTime": null,
+              "body": "{\n    \"_id\": \"62709ce818540c08c19146ea\",\n    \"username\": \"change their name\",\n    \"email\": \"change@example.com\",\n    \"__v\": 0\n}"
+            }
+          ]
+        }
+      ],
+      "_postman_id": "ec71f439-4d4e-4a06-8d51-2aafd0c90f90"
+    },
+    {
+      "name": "ping",
+      "_postman_id": "decaa3f8-90e5-4501-bc6c-21655804bdaf",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:3001/api/ping"
+      },
+      "response": []
+    }
+  ]
+}
