@@ -11,6 +11,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./moneylink-backend:/src
+    env_file:
+      - ./moneylink-backend/.env
 # experimental Mongo docker image
   # moneylink-db:
   #   image: mongo:latest
