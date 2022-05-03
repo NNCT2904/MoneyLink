@@ -9,7 +9,7 @@
     {
       "name": "Authentication",
       "item": [],
-      "_postman_id": "c1182b98-b244-4ade-82d7-43436a6bd9c2",
+      "id": "c1182b98-b244-4ade-82d7-43436a6bd9c2",
       "description": "To be added"
     },
     {
@@ -17,7 +17,7 @@
       "item": [
         {
           "name": "Create",
-          "_postman_id": "873918bc-4162-4cb6-b811-f72d63ed048f",
+          "id": "873918bc-4162-4cb6-b811-f72d63ed048f",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -99,7 +99,7 @@
         },
         {
           "name": "Get",
-          "_postman_id": "3b7ecca3-3076-4ac1-a7f2-e55d3936cd16",
+          "id": "3b7ecca3-3076-4ac1-a7f2-e55d3936cd16",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -184,7 +184,7 @@
         },
         {
           "name": "Update",
-          "_postman_id": "f6f8e0c5-844d-45c6-9186-65e925316c9b",
+          "id": "f6f8e0c5-844d-45c6-9186-65e925316c9b",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -270,7 +270,7 @@
         },
         {
           "name": "Delete",
-          "_postman_id": "df248ac1-ba0d-483b-97ba-b4c4ea1c37ba",
+          "id": "df248ac1-ba0d-483b-97ba-b4c4ea1c37ba",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -355,7 +355,7 @@
           ]
         }
       ],
-      "_postman_id": "09313e0d-5267-4beb-a3ea-ae9f6799e952",
+      "id": "09313e0d-5267-4beb-a3ea-ae9f6799e952",
       "description": "These Household APIs allow to manage household."
     },
     {
@@ -363,7 +363,7 @@
       "item": [
         {
           "name": "Create bill",
-          "_postman_id": "421b1118-bb0f-4a87-b894-d6b8e705aeae",
+          "id": "421b1118-bb0f-4a87-b894-d6b8e705aeae",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -448,7 +448,7 @@
         },
         {
           "name": "Get Bill",
-          "_postman_id": "ceb5d729-4383-47cf-858e-9a2faf7a6abb",
+          "id": "ceb5d729-4383-47cf-858e-9a2faf7a6abb",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -529,7 +529,7 @@
         },
         {
           "name": "Update Bill",
-          "_postman_id": "5422ed95-373b-4079-9043-19f15100d064",
+          "id": "5422ed95-373b-4079-9043-19f15100d064",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -610,7 +610,7 @@
         },
         {
           "name": "Delete Bill",
-          "_postman_id": "3e3f0f02-e75c-4d17-b763-1101427ae4d2",
+          "id": "3e3f0f02-e75c-4d17-b763-1101427ae4d2",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -690,14 +690,14 @@
           ]
         }
       ],
-      "_postman_id": "56a837cf-aa91-4e16-ac45-c0164ef28aaa"
+      "id": "56a837cf-aa91-4e16-ac45-c0164ef28aaa"
     },
     {
       "name": "User Controller",
       "item": [
         {
           "name": "Create User",
-          "_postman_id": "ee697581-4155-4e84-81a3-5b0465a7b98e",
+          "id": "ee697581-4155-4e84-81a3-5b0465a7b98e",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -782,7 +782,7 @@
         },
         {
           "name": "Get User",
-          "_postman_id": "a254fa29-967a-4e24-b93d-6c0f8227398b",
+          "id": "a254fa29-967a-4e24-b93d-6c0f8227398b",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -867,7 +867,7 @@
         },
         {
           "name": "Update User",
-          "_postman_id": "4e4fc669-6cdb-4ab1-bd90-4e7e545f6fae",
+          "id": "4e4fc669-6cdb-4ab1-bd90-4e7e545f6fae",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -952,7 +952,7 @@
         },
         {
           "name": "Delete User",
-          "_postman_id": "70e81b37-3b25-47e8-8d1e-ceed2c1a63c2",
+          "id": "70e81b37-3b25-47e8-8d1e-ceed2c1a63c2",
           "protocolProfileBehavior": {
             "disableBodyPruning": true
           },
@@ -1036,11 +1036,11 @@
           ]
         }
       ],
-      "_postman_id": "ec71f439-4d4e-4a06-8d51-2aafd0c90f90"
+      "id": "ec71f439-4d4e-4a06-8d51-2aafd0c90f90"
     },
     {
       "name": "ping",
-      "_postman_id": "decaa3f8-90e5-4501-bc6c-21655804bdaf",
+      "id": "decaa3f8-90e5-4501-bc6c-21655804bdaf",
       "protocolProfileBehavior": {
         "disableBodyPruning": true
       },
