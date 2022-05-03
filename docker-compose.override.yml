@@ -13,6 +13,16 @@ services:
       - ./moneylink-backend:/src
     env_file:
       - ./moneylink-backend/.env
+    
+  moneylink-frontend:
+    build: 
+      target: dev
+    image: moneylinkfrontend:development
+    container_name: moneylinkfrontend_development
+    restart: unless-stopped
+    volumes:
+      - ./moneylink-frontend:/src
+
 # experimental Mongo docker image
   # moneylink-db:
   #   image: mongo:latest

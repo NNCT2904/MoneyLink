@@ -5,3 +5,11 @@ services:
         build: 
             context: "./moneylink-backend"
             dockerfile: ".docker/Dockerfile"
+    
+    moneylink-frontend:
+        ports: 
+            - 8080:8080
+        build: 
+            context: "./moneylink-frontend"
+            dockerfile: ".docker/Dockerfile"
+    
