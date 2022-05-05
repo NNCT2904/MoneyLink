@@ -9,6 +9,3 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import '@/assets/css/global.css'
 
 createApp(App).use(store).use(router).use(ElementPlus).mount('#app')
-for ([key, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(key, component)
-}
