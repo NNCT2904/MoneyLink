@@ -1,4 +1,4 @@
-FROM node:16.14-buster-slim as base
+FROM node:16-buster-slim as base
 WORKDIR /src
 
 FROM base as dev
