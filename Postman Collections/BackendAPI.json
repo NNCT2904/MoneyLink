@@ -362,7 +362,8 @@
           },
           "request": {
             "method": "GET",
-            "header": []
+            "header": [],
+            "url": "http://localhost:3001/api/findhousehold"
           },
           "response": []
         }
