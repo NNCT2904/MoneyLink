@@ -106,6 +106,15 @@
           "request": {
             "method": "GET",
             "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\":  \"testemail@example.com\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
             "url": "http://localhost:3001/api/findhousehold"
           },
           "response": [
