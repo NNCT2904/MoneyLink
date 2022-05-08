@@ -1,26 +1,32 @@
 <template>
-  <div style="padding: 50px">
-    <div style="margin: 10px 0">
-      
-    </div>
-    <div style="margin: 10px">
-      <el-input v-model="searchTable" placeholder="Enter your key words" style="width: 20%"></el-input>
+  <div>
+  <div id="Aside">
+    <Aside />
+    <div style="width:100%; height:100%">
+    <div style="margin: 10px; margin-left:30%">
+      <el-input v-model="searchTable" placeholder="Enter your key words" style="width:20%"></el-input>
       <el-button type="primary" style="margin: 5px">Search</el-button>
       <el-button type="primary">Create</el-button>
     </div>
     <el-table :data="tableData" stripe style="width: 100%">
-    <el-table-column prop="date" align="center" label="Date" width="180" sortable/>
-    <el-table-column prop="amount" align="center" label="Amount" width="180" />
+    <el-table-column prop="date" align="center" label="Date" width="250" sortable/>
+    <el-table-column prop="amount" align="center" label="Amount" width="250" />
     <el-table-column prop="description" align="center" label="Description" />
   </el-table>
+  </div>
+  </div>
   </div>
 </template>
 
 <script>
-
+import Aside from "@/components/Aside";
 export default {
-  name: 'HomeView',
+  created() {
+    this.$store.state.ifFrameShow=true
+  },
+  name: 'houseHold',
   components: {
+    Aside
   },
   data(){
     searchTable: ''
@@ -52,3 +58,7 @@ export default {
   
 }
 </script>
+
+<style>
+
+</style>
