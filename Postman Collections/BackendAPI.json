@@ -353,6 +353,18 @@
               "body": "{\n    \"_id\": \"6268ed7e8b2e6327e48b0c58\",\n    \"name\": \"a name, delete later \",\n    \"members\": [],\n    \"bills\": [],\n    \"__v\": 0\n}"
             }
           ]
+        },
+        {
+          "name": "New Request",
+          "id": "195376fe-f588-4f79-a1dd-14f6b0d4a67f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
         }
       ],
       "id": "09313e0d-5267-4beb-a3ea-ae9f6799e952",
