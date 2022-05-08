@@ -3,7 +3,7 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <div style="width: 200px; padding-left: 30px; font-weight: bold; ">MoneyLink</div>
     <div style="flex: 1"></div>
-    <div style="width: 100px">
+    <div v-if="this.$store.state.ifFrameShow" style="width: 100px">
         <el-dropdown>
             <span class="el-dropdown-link">
            <br>Hi,Tommy <el-icon class="el-icon--right"><arrow-down /></el-icon>
