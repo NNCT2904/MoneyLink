@@ -38,64 +38,6 @@
           },
           "response": [
             {
-              "id": "781e140c-1ac8-489a-b3c0-544b986f15b4",
-              "name": "Create a household",
-              "originalRequest": {
-                "method": "POST",
-                "header": [],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n    \"name\": \"test name\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": "http://localhost:3001/api/household"
-              },
-              "status": "Created",
-              "code": 201,
-              "_postman_previewlanguage": "json",
-              "header": [
-                {
-                  "key": "X-Powered-By",
-                  "value": "Express"
-                },
-                {
-                  "key": "Access-Control-Allow-Origin",
-                  "value": "*"
-                },
-                {
-                  "key": "Content-Type",
-                  "value": "application/json; charset=utf-8"
-                },
-                {
-                  "key": "Content-Length",
-                  "value": "85"
-                },
-                {
-                  "key": "ETag",
-                  "value": "W/\"55-XytXZcZ5qwAjouPf06/Cgq7BzZ0\""
-                },
-                {
-                  "key": "Date",
-                  "value": "Tue, 26 Apr 2022 04:29:51 GMT"
-                },
-                {
-                  "key": "Connection",
-                  "value": "keep-alive"
-                },
-                {
-                  "key": "Keep-Alive",
-                  "value": "timeout=5"
-                }
-              ],
-              "cookie": [],
-              "responseTime": null,
-              "body": "{\n    \"name\": \"test name\",\n    \"members\": [],\n    \"bills\": [],\n    \"_id\": \"6267753fd30b15eab31ae4db\",\n    \"__v\": 0\n}"
-            },
-            {
               "id": "72f82db7-7c43-4860-aec0-70d1d91eeede",
               "name": "Create",
               "originalRequest": {
