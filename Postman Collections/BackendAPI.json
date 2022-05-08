@@ -163,7 +163,11 @@
                   "value": "timeout=5"
                 }
               ],
-              "cookie": [],
+              "cookie": [
+                {
+                  "expires": "Invalid Date"
+                }
+              ],
               "responseTime": null,
               "body": "[\n    {\n        \"_id\": \"62774ad33beba3a23a787a7b\",\n        \"name\": \"test name\",\n        \"email\": \"testemail@example.com\",\n        \"members\": [],\n        \"bills\": [],\n        \"__v\": 0\n    }\n]"
             }
