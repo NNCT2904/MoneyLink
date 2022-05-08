@@ -26,7 +26,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"name\": \"test name\"\n}",
+              "raw": "{\n    \"name\": \"test name\",\n    \"email\": \"testemail@example.com\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
