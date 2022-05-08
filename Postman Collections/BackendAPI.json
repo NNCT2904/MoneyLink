@@ -98,6 +98,78 @@
           ]
         },
         {
+          "name": "Find",
+          "id": "195376fe-f588-4f79-a1dd-14f6b0d4a67f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3001/api/findhousehold"
+          },
+          "response": [
+            {
+              "id": "a9224be4-2152-4ec8-9c90-1110f33dc6fe",
+              "name": "Find",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\":  \"testemail@example.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": "http://localhost:3001/api/findhousehold"
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "X-Powered-By",
+                  "value": "Express"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "119"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"77-LhHmrAvgjWCV8Yw4sly7sgbk3hE\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 08 May 2022 04:48:23 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n    {\n        \"_id\": \"62774ad33beba3a23a787a7b\",\n        \"name\": \"test name\",\n        \"email\": \"testemail@example.com\",\n        \"members\": [],\n        \"bills\": [],\n        \"__v\": 0\n    }\n]"
+            }
+          ]
+        },
+        {
           "name": "Get",
           "id": "3b7ecca3-3076-4ac1-a7f2-e55d3936cd16",
           "protocolProfileBehavior": {
@@ -353,19 +425,6 @@
               "body": "{\n    \"_id\": \"6268ed7e8b2e6327e48b0c58\",\n    \"name\": \"a name, delete later \",\n    \"members\": [],\n    \"bills\": [],\n    \"__v\": 0\n}"
             }
           ]
-        },
-        {
-          "name": "Find",
-          "id": "195376fe-f588-4f79-a1dd-14f6b0d4a67f",
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": "http://localhost:3001/api/findhousehold"
-          },
-          "response": []
         }
       ],
       "id": "09313e0d-5267-4beb-a3ea-ae9f6799e952",
