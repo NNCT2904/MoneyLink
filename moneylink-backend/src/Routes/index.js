@@ -13,6 +13,7 @@ appRouter.get('/ping', (req, res) => {
 
 // Household APIs
 appRouter.post('/household', HouseholdController.createHousehold);
+appRouter.get('/findHousehold', HouseholdController.findHousehold);
 appRouter.get('/household', HouseholdController.getHousehold);
 appRouter.put('/household', HouseholdController.updateHousehold);
 appRouter.delete('/household', HouseholdController.deleteHousehold);

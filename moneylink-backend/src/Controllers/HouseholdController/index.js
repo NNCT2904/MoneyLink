@@ -1,15 +1,29 @@
 const { Household, Bill, User } = require('../../Models');
 
 const createHousehold = async (req, res) => {
-  const { name } = req.body;
+  const { name, email } = req.body;
 
-  if (!name) return res.status(400).json({ error: 'Missing parameter "name"' });
+  if (!name || !email) return res.status(400).json({ error: 'Missing parameter "name" or "email"' });
 
   const household = new Household({
-    name: name,
+    name,
+    email,
   });
 
   return await household.save().then((household) => res.status(201).json(household));
+};
+
+const findHousehold = async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) return res.status(400).json({ error: 'Missing parameter "email"' });
+
+  return await Household.find({ email: email })
+    .then((household) => {
+      if (!household) return res.status(404).json({ error: 'Household not found' });
+      return res.status(200).json(household);
+    })
+    .catch((error) => res.status(400).json(error));
 };
 
 const getHousehold = async (req, res) => {
@@ -49,6 +63,7 @@ const deleteHousehold = async (req, res) => {
 
 module.exports = {
   createHousehold,
+  findHousehold,
   getHousehold,
   updateHousehold,
   deleteHousehold,

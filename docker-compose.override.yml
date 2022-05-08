@@ -3,10 +3,10 @@ services:
     build:
       target: dev
     image: moneylinkbackend:development
-    links:
-      - moneylink-db
-    depends_on:
-      - moneylink-db
+    # links:
+    #   - moneylink-db
+    # depends_on:
+    #   - moneylink-db
     container_name: moneylinkbackend_development
     restart: unless-stopped
     volumes:

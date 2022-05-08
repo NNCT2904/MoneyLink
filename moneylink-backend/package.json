@@ -18,8 +18,10 @@
     "http-proxy": "^1.18.1",
     "mongoose": "^6.2.4",
     "nodemon": "^2.0.15",
+    "passport": "^0.5.2",
     "socket.io": "^4.4.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "axios": "^0.26.1",

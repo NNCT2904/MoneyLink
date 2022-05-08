@@ -27,9 +27,11 @@ const getBill = async (req, res) => {
 };
 
 const updateBill = async (req, res) => {
-  const { _id } = req.body;
+  const { _id, name, amount } = req.body;
 
   if (!_id) return res.status(400).json({ error: 'Missing parameter "id"' });
+
+  if (!name || !amount) return res.status(400).json({ error: 'Missing parameter "name" or "amount"' });
 
   await Bill.findByIdAndUpdate(_id, req.body);
 
