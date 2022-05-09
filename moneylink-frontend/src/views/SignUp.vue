@@ -52,7 +52,6 @@
 
 <script>
 import axios from "axios";
-import qs from 'qs'
 export default {
   name: "SignUp",
   data() {
@@ -70,13 +69,9 @@ export default {
       }
     },
     methods: {
-    SignUp(){
- let params = {
-  name: this.form.last_name+this.form.first_name,
-  email: this.form.email
-}
-axios
-  .post('http://localhost:3001/test',{data: qs.stringify(params)})
+   SignUp(){
+   axios
+  .post('http://localhost:3001/api/household',{name: this.form.first_name,email: this.form.email})
 
   .then(function (response) {
     console.log(response);

@@ -18,16 +18,6 @@ app.all("*", function(req, res, next) {
   next();
 });
 
-var bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-
-app.post("/test", (req, res) => {
-  const name = req.body.name // 'O.O'
-  console.log(req.body.name)
-  res.json( name )
-});
-
 // Connect to MongoDB
 mongoConnect(process.env.MONGODB_URI);
 
