@@ -32,7 +32,7 @@ Follow belows to install and launch the application in the localhost
 git clone git@github.com:NNCT2904/MoneyLink.git
 ```
 ### Create the config file
-After cloning the repository, create an `.env` config file and filling the values:
+After cloning the repository, create an `.env` file inside the `moneylick-backend` folder and filling the values:
 - `MONGODB_URI`: the connection string to MongoDB
 
 For example:
