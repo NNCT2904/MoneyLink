@@ -12,6 +12,7 @@ const url = 'http://localhost:3001';
 let householdObject = {
   _id: '',
   name: '',
+  email: '',
 };
 
 describe('Household controller test', () => {
@@ -19,11 +20,26 @@ describe('Household controller test', () => {
     chai
       .request(url)
       .post('/api/household')
-      .send({ name: 'Test household' })
+      .send({
+        name: 'Test household',
+        email: 'test@example.com',
+      })
       .end((err, res) => {
         householdObject = res.body;
         expect(res).to.have.status(201);
         expect(res.body).to.have.property('name').eql('Test household');
+        done();
+      });
+  });
+
+  it('Should be able to find the household given an email', (done) => {
+    chai
+      .request(url)
+      .get(`/api/findHousehold`)
+      .send({ email: householdObject.email })
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body).to.be.an('array');
         done();
       });
   });
