@@ -9,10 +9,10 @@
       <el-form label-width="0px" class="login_form">
         <el-row>
         <el-form-item style="margin-right:5px">
-          <el-input class="login_input" id="SignUpFirstName" placeholder="First Name"></el-input>
+          <el-input v-model="form.first_name" class="login_input" id="first_name" placeholder="First Name"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input class="login_input" id="SignUpLastName" placeholder="Last Name"></el-input>
+          <el-input v-model="form.last_name" class="login_input" id="last_name" placeholder="Last Name"></el-input>
         </el-form-item>
         </el-row>
         <el-form-item >
@@ -32,17 +32,17 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-input class="login_input" id="login_email" placeholder="Email"></el-input>
+          <el-input v-model="form.email" class="login_input" id="login_email" placeholder="Email"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input class="login_input" id="login_password" placeholder="Password"></el-input>
+          <el-input v-model="form.password" class="login_input" id="login_password" placeholder="Password"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input class="login_input" id="login_password" placeholder="Pleaese enter your password again"></el-input>
+          <el-input v-model="form.repeated_password" class="login_input" id="repeat_password" placeholder="Pleaese enter your password again"></el-input>
         </el-form-item>
         <el-row justify="center">
           <el-form-item class="login_btn">
-            <el-button  type="primary" round plain size="large">Sgin Up</el-button>
+            <el-button  type="primary" round plain size="large" @click="SignUp()">Sgin Up</el-button>
           </el-form-item>
         </el-row>
       </el-form>
@@ -51,26 +51,40 @@
 </template>
 
 <script>
+import axios from "axios";
+import qs from 'qs'
 export default {
   name: "SignUp",
   data() {
       return {
         form: {
-          name: '',
+          first_name: '',
+          last_name: '',
           region: '',
           date1: '',
           date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: '',
+          email: '',
+          password: '',
+          repeated_password: '',
         },
       }
     },
     methods: {
-      onSubmit() {
-        console.log('submit!')
-      },
+    SignUp(){
+ let params = {
+  name: this.form.last_name+this.form.first_name,
+  email: this.form.email
+}
+axios
+  .post('http://localhost:3001/test',{data: qs.stringify(params)})
+
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  },
     },
 };
 </script>

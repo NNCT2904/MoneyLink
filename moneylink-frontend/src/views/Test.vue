@@ -6,22 +6,28 @@
 
 <script>
 import axios from "axios";
+import qs from 'qs'
 export default {
   name: "Test",
   data() {
     return {
       msg: "",
+      user:'111'
     };
   },
   created() {
-    axios
-      .get("http://localhost:3001/test")
-      .then((res) => {
-        this.msg = res.data;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const params = {
+  name: '333'
+}
+axios
+  .post('http://localhost:3001/test',{name:333})
+
+  .then(function (response) {
+    alert(response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
   },
 };
 </script>
