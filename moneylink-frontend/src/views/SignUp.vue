@@ -38,7 +38,7 @@
           <el-input v-model="form.repeated_email" class="login_input" id="repeated_email" placeholder="Please confirm your email"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input v-model="form.repeated_password" class="login_input" id="login_password" placeholder="There is no password, input anything u like, this is a mockup"></el-input>
+          <el-input v-model="form.repeated_password" class="login_input" id="login_password" placeholder="Password (Input anything u like, it's a mockup)"></el-input>
         </el-form-item>
         <el-row justify="center">
           <el-form-item class="login_btn">
