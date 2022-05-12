@@ -3,7 +3,7 @@
     <div class="login_box">
       <!-- logo -->
       <div class="avatar_box">
-        <img src="../assets/logo.png" alt="" />
+        <img src="../assets/logo.jpg" alt="" />
       </div>
       <!-- Login form -->
       <el-form label-width="0px" class="login_form">

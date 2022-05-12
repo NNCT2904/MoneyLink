@@ -1,7 +1,7 @@
 <template>
     <div style="height: 50px; line-height: 50px; border-bottom: 1px solid #ccc; display: flex">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <div style="width: 200px; padding-left: 30px; font-weight: bold; ">MoneyLink</div>
+    <img alt="Vue logo" src="../assets/logo.jpg">
+    <div style="width: 200px; padding-left: 10px; font-weight: bold; ">MoneyLink</div>
     <div style="flex: 1"></div>
     <div v-if="this.$store.state.ifFrameShow" style="width: 100px">
         <el-dropdown>

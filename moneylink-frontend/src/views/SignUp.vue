@@ -3,7 +3,7 @@
     <div class="login_box">
       <!-- logo -->
       <div class="avatar_box">
-        <img src="../assets/logo.png" alt="" />
+        <img src="../assets/logo.jpg" alt="" />
       </div>
       <!-- Login form -->
       <el-form label-width="0px" class="login_form">
@@ -35,10 +35,10 @@
           <el-input v-model="form.email" class="login_input" id="login_email" placeholder="Email"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input v-model="form.password" class="login_input" id="login_password" placeholder="Password"></el-input>
+          <el-input v-model="form.repeated_email" class="login_input" id="repeated_email" placeholder="Please confirm your email"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input v-model="form.repeated_password" class="login_input" id="repeat_password" placeholder="Pleaese enter your password again"></el-input>
+          <el-input v-model="form.repeated_password" class="login_input" id="login_password" placeholder="Password (Input anything u like, it's a mockup)"></el-input>
         </el-form-item>
         <el-row justify="center">
           <el-form-item class="login_btn">
@@ -61,25 +61,40 @@ export default {
           last_name: '',
           region: '',
           date1: '',
-          date2: '',
           email: '',
+          repeated_email: '',
           password: '',
-          repeated_password: '',
         },
       }
     },
     methods: {
-   SignUp(){
-   axios
-  .post('http://localhost:3001/api/household',{name: this.form.first_name,email: this.form.email})
+   SendAccount(){
+   axios.post('http://localhost:3001/api/household',{name: this.form.first_name,email: this.form.email})
 
   .then(function (response) {
     console.log(response);
+    if(response.statusText=="Created"){
+      alert("Sign up successfully!")
+      return true
+    }
+    else{
+      alert("There is some problem with backend, please try again!")
+      return false
+    }
   })
   .catch(function (error) {
     console.log(error);
   });
   },
+  SignUp(){
+    if(this.form.email!==this.form.repeated_email){
+      alert("!!")
+    }
+    else{
+      this.SendAccount()
+    this.$router.push('/')
+    }
+  }
     },
 };
 </script>
