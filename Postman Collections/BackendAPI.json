@@ -17,7 +17,8 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"description": "The mockup signup function does not require password. This API creates a new household with user email and the household name."
 					},
 					"response": [
 						{
