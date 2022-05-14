@@ -114,7 +114,7 @@
 					"response": [
 						{
 							"id": "a5192e9d-3a0c-4aec-9181-bef9aae6e5ba",
-							"name": "New Request",
+							"name": "Login",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
