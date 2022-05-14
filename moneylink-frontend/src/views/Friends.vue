@@ -6,7 +6,7 @@
     <div style="margin: 10px; margin-left:30%">
       <el-input v-model="searchTable" placeholder="Enter your key words" style="width:20%"></el-input>
       <el-button type="primary" style="margin: 5px">Search</el-button>
-      <el-button type="primary">Create</el-button>
+      <el-button type="primary">Add</el-button>
     </div>
     <el-table :data="tableData" stripe style="width: 100%">
     <el-table-column prop="date" align="center" label="Friend ID" width="250" />
