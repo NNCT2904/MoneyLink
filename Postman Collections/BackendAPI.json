@@ -109,7 +109,8 @@
 								}
 							}
 						},
-						"url": "http://localhost:3001/api/login"
+						"url": "http://localhost:3001/api/login",
+						"description": "The mockup login function does not require password. This API finds households with matching email and returns as an array of households"
 					},
 					"response": [
 						{
