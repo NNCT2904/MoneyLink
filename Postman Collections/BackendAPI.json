@@ -10,7 +10,7 @@
 			"name": "Authentication",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Login",
 					"id": "88fa8e0a-10e0-4635-b01c-0b814d79075f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
