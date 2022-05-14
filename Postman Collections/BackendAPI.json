@@ -16,8 +16,18 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"test name\",\n    \"email\": \"testemail@example.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3001/api/signup",
 						"description": "The mockup signup function does not require password. This API creates a new household with user email and the household name."
 					},
 					"response": [
