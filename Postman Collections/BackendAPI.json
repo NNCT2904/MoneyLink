@@ -33,7 +33,7 @@
 					"response": [
 						{
 							"id": "aeb4fd92-545b-4c5f-9d5f-911ef99bcff7",
-							"name": "Login",
+							"name": "Signup",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
