@@ -19,7 +19,66 @@
 						"method": "GET",
 						"header": []
 					},
-					"response": []
+					"response": [
+						{
+							"id": "aeb4fd92-545b-4c5f-9d5f-911ef99bcff7",
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"test name\",\n    \"email\": \"testemail@example.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3001/api/signup"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "117"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"75-1xM860w/T8jsYIWDj1RnJt/wH4M\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 14 May 2022 17:10:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"name\": \"test name\",\n    \"email\": \"testemail@example.com\",\n    \"members\": [],\n    \"bills\": [],\n    \"_id\": \"627fe28c4669fbccb0c5ebb1\",\n    \"__v\": 0\n}"
+						}
+					]
 				}
 			],
 			"id": "c1182b98-b244-4ade-82d7-43436a6bd9c2",
