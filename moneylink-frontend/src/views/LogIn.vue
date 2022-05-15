@@ -8,14 +8,14 @@
       <!-- Login form -->
       <el-form label-width="0px" class="login_form">
         <el-form-item>
-          <el-input class="login_input" id="login_email" placeholder="Email"></el-input>
+          <el-input v-model="form.email" class="login_input" id="login_email" placeholder="Email"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-input class="login_input" id="login_password" placeholder="Password"></el-input>
+          <el-input v-model="form.password" class="login_input" id="login_password" placeholder="Password"></el-input>
         </el-form-item>
         <el-row justify="end">
           <el-form-item class="login_btn">
-            <el-button  type="primary" round plain size="large">Log In</el-button>
+            <el-button  type="primary" round plain size="large" @click="CheckAccount()">Log In</el-button>
             <el-link id="signup_link" href="/signup" >Don't have an account?</el-link>
           </el-form-item>
         </el-row>
@@ -25,8 +25,38 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "LogIn",
+  data() {
+      return {
+        form: {
+          email: '',
+          password: '',
+        },
+      }
+    },
+  methods:{
+   CheckAccount(){
+   const user=this;
+   axios.post('http://localhost:3001/api/login',{email: this.form.email})
+
+  .then(function (response) {
+    console.log(response);
+    if(response.statusText=="OK")
+    {
+      alert("Log in successfully!")
+      user.$router.push("/household");
+    }
+    else{
+      alert("Account no exist!")
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  },
+  }
 };
 </script>
 

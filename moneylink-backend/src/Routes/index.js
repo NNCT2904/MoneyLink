@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { HouseholdController, BillController, UserController } = require('../Controllers');
+const { Authentication, HouseholdController, BillController, UserController } = require('../Controllers');
 
 const appRouter = express.Router();
 
@@ -11,6 +11,9 @@ appRouter.get('/ping', (req, res) => {
   res.json({ message: 'pong' });
 });
 
+// Authentication
+appRouter.post('/signup', Authentication.signup);
+appRouter.post('/login', Authentication.login);
 // Household APIs
 appRouter.post('/household', HouseholdController.createHousehold);
 appRouter.get('/findHousehold', HouseholdController.findHousehold);
