@@ -6,7 +6,8 @@
     <div style="margin: 10px; margin-left:30%">
       <el-input v-model="searchTable" placeholder="Enter your key words" style="width:20%"></el-input>
       <el-button type="primary" style="margin: 5px">Search</el-button>
-      <el-button type="primary">Add</el-button>
+      <test-dialog type="primary" ref="testDom"  v-model:visible="flag" :btname='btname' :title='title' ></test-dialog>
+      
     </div>
     <el-table :data="tableData" stripe style="width: 100%">
     <el-table-column prop="date" align="center" label="Friend ID" width="250" />
@@ -20,17 +21,22 @@
 
 <script>
 import Aside from "@/components/Aside";
+import TestDialog from "@/components/TestDialog"
 export default {
   created() {
     this.$store.state.ifFrameShow=true
   },
   name: 'friends',
+  
   components: {
-    Aside
+    Aside,
+    TestDialog,
   },
   data(){
     searchTable: ''
     return{
+      btname:'add',
+      title: 'Add a friend',
       tableData:[
   {
     date: '2016-05-03',
