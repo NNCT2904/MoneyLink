@@ -36,12 +36,12 @@ export default {
         },
       }
     },
-  method:{
+  methods:{
    CheckAccount(){
-   axios.get('http://localhost:3001/api/findHousehold',{email: this.form.email})
+   axios.post('http://localhost:3001/api/login',{email: this.form.email})
 
   .then(function (response) {
-    console.log(response);
+    console.log(response.data);
   })
   .catch(function (error) {
     console.log(error);
