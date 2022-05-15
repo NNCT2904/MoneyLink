@@ -38,10 +38,19 @@ export default {
     },
   methods:{
    CheckAccount(){
+   const user=this;
    axios.post('http://localhost:3001/api/login',{email: this.form.email})
 
   .then(function (response) {
-    console.log(response.data);
+    console.log(response);
+    if(response.statusText=="OK")
+    {
+      alert("Log in successfully!")
+      user.$router.push("/household");
+    }
+    else{
+      alert("Account no exist!")
+    }
   })
   .catch(function (error) {
     console.log(error);

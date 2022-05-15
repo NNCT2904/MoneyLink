@@ -7,17 +7,26 @@ const routes = [
   {
     path:'/signup',
     name:'SignUp',
-    component: SignUp
+    component: SignUp,
+    meta:{
+      isLogin: false
+    }
   },
   {
     path: '/',
     name: 'LogIn',
-    component: LogIn
+    component: LogIn,
+    meta:{
+      isLogin: false
+    }
   },
   {
     path: '/household',
     name: 'HouseHold',
-    component: HouseHold
+    component: HouseHold,
+    meta:{
+      isLogin: true
+    }
   },
   {
     path: '/groups',
@@ -25,7 +34,10 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Groups.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Groups.vue'),
+    meta:{
+      isLogin: true
+    }
   },
   {
     path: '/friends',
@@ -33,7 +45,10 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Friends.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Friends.vue'),
+    meta:{
+      isLogin: true
+    }
   }
 ]
 
