@@ -69,7 +69,7 @@ export default {
     },
     methods: {
    SendAccount(){
-   axios.post('http://localhost:3001/api/household',{name: this.form.first_name,email: this.form.email})
+   axios.post('http://localhost:3001/api/signup',{name: this.form.first_name,email: this.form.email})
 
   .then(function (response) {
     console.log(response);
@@ -88,7 +88,7 @@ export default {
   },
   SignUp(){
     if(this.form.email!==this.form.repeated_email){
-      alert("!!")
+      alert("Please check your email!")
     }
     else{
       this.SendAccount()
