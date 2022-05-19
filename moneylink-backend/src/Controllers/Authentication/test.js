@@ -54,6 +54,14 @@ describe('Authentication mockup test', () => {
       .end((err, res) => {
         expect(res).to.have.status(200);
         expect(res.body).to.have.property('name').eql(householdObject.name);
+      });
+
+    chai
+      .request(url)
+      .post('/api/login')
+      .send({ email: householdObject.email })
+      .end((err, res) => {
+        expect(res).to.have.status(404);
         done();
       });
   });
