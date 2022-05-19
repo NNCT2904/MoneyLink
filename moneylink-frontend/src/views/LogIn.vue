@@ -46,14 +46,13 @@ export default {
     if(response.statusText=="OK")
     {
       alert("Log in successfully!")
+      sessionStorage.setItem('user_name',response.data[0].name)
       user.$router.push("/household");
-    }
-    else{
-      alert("Account no exist!")
     }
   })
   .catch(function (error) {
     console.log(error);
+    alert("Account no exist!")
   });
   },
   }

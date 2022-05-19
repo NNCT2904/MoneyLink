@@ -6,7 +6,7 @@
     <div v-if="this.$store.state.ifFrameShow" style="width: 100px">
         <el-dropdown>
             <span class="el-dropdown-link">
-           <br>Hi,Tommy <el-icon class="el-icon--right"><arrow-down /></el-icon>
+           <br>{{headerData.name}} <el-icon class="el-icon--right"><arrow-down /></el-icon>
             </span>
         <template #dropdown>
             <el-dropdown-menu>
@@ -26,7 +26,14 @@ export default {
     name:"Header",
     components:{
         ArrowDown
-    }
+    },
+    data () {
+        return {
+          headerData: {
+            name: sessionStorage.getItem('user_name')
+          }
+        }
+    },
 }
 </script>
 
