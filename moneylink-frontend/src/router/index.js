@@ -56,5 +56,26 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+router.beforeEach((to, from, next) => {
+  if (to.meta.isLogin) {   //If the page needs to log in
+  if (sessionStorage.getItem('token')) {   //If user already login, go next
+   next();
+   
+  } else { //If user haven't login, go to log in page
+   alert("Log in first!")
+   console.log('Log in first!');  
+   next('/');
+  }
+  } 
+  else {       //If the page don't need log in
+  if (sessionStorage.getItem('token')){ //If user already login, go to homepage
+    next('/household')
+    console.log('Log in alreay')
+  }
+  else{ //If user haven't login, go next
+    next()
+  }
+  }
+ });
 
 export default router

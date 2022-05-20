@@ -8,3 +8,5 @@ import 'element-plus/dist/index.css'
 import '@/assets/css/global.css'
 
 const app=createApp(App).use(store).use(router).use(ElementPlus).mount('#app')
+
+
