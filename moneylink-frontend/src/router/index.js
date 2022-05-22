@@ -7,12 +7,18 @@ const routes = [
   {
     path:'/signup',
     name:'SignUp',
-    component: SignUp
+    component: SignUp,
+    meta:{
+      isLogin: false
+    }
   },
   {
     path: '/',
     name: 'LogIn',
-    component: LogIn
+    component: LogIn,
+    meta:{
+      isLogin: false
+    }
   },
   {
     path: '/test',
@@ -22,7 +28,10 @@ const routes = [
   {
     path: '/household',
     name: 'HouseHold',
-    component: HouseHold
+    component: HouseHold,
+    meta:{
+      isLogin: true
+    }
   },
   {
     path: '/groups',
@@ -30,7 +39,10 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Groups.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Groups.vue'),
+    meta:{
+      isLogin: true
+    }
   },
   {
     path: '/friends',
@@ -38,7 +50,10 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Friends.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Friends.vue'),
+    meta:{
+      isLogin: true
+    }
   }
 ]
 
@@ -46,5 +61,26 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+router.beforeEach((to, from, next) => {
+  if (to.meta.isLogin) {   //If the page needs to log in
+  if (sessionStorage.getItem('token')) {   //If user already login, go next
+   next();
+   
+  } else { //If user haven't login, go to log in page
+   alert("Log in first!")
+   console.log('Log in first!');  
+   next('/');
+  }
+  } 
+  else {       //If the page don't need log in
+  if (sessionStorage.getItem('token')){ //If user already login, go to homepage
+    next('/household')
+    console.log('Log in alreay')
+  }
+  else{ //If user haven't login, go next
+    next()
+  }
+  }
+ });
 
 export default router

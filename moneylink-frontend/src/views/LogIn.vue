@@ -41,10 +41,18 @@ export default {
    axios.post('http://localhost:3001/api/login',{email: this.form.email})
 
   .then(function (response) {
-    console.log(response.data);
+    console.log(response);
+    if(response.statusText=="OK")
+    {
+      alert("Log in successfully!")
+      sessionStorage.setItem('user_name',response.data[0].name)
+      sessionStorage.setItem('token',true)
+      window.location.href="/household"
+    }
   })
   .catch(function (error) {
     console.log(error);
+    alert("Account no exist!")
   });
   },
   }

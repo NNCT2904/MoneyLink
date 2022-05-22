@@ -22,7 +22,7 @@ const login = async (req, res) => {
 
   return await Household.find({ email: email })
     .then((household) => {
-      if (!household) return res.status(404).json({ error: 'Household not found' });
+      if (household.length < 1) return res.status(404).json({ error: 'Household not found' });
       return res.status(200).json(household);
     })
     .catch((error) => res.status(400).json(error));
