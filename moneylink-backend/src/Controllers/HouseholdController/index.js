@@ -14,7 +14,7 @@ const createHousehold = async (req, res) => {
 };
 
 const findHousehold = async (req, res) => {
-  const { email } = req.body;
+  const { email } = req.query.email ? req.query : req.body;
 
   if (!email) return res.status(400).json({ error: 'Missing parameter "email"' });
 
@@ -27,7 +27,7 @@ const findHousehold = async (req, res) => {
 };
 
 const getHousehold = async (req, res) => {
-  const { _id } = req.body;
+  const { _id } = req.query._id ? req.query : req.body;
 
   if (!_id) return res.status(400).json({ error: 'Missing parameter "id"' });
 
