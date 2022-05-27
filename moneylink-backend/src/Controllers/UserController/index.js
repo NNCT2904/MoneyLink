@@ -13,7 +13,7 @@ const createUser = async (req, res) => {
 };
 
 const getUser = async (req, res) => {
-  const { _id } = req.body;
+  const { _id } = req.query._id ? req.query : req.body;
 
   if (!_id) return res.status(400).json({ error: 'Missing parameter "id"' });
 
@@ -52,4 +52,4 @@ module.exports = {
   getUser,
   updateUser,
   deleteUser,
-}
+};
