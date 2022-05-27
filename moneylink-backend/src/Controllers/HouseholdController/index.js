@@ -32,6 +32,8 @@ const getHousehold = async (req, res) => {
   if (!_id) return res.status(400).json({ error: 'Missing parameter "id"' });
 
   return await Household.findById(_id)
+    .populate('bills')
+    .populate('members')
     .then((household) => {
       if (!household) return res.status(404).json({ error: 'Household not found' });
       return res.status(200).json(household);
