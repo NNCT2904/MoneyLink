@@ -31,8 +31,16 @@ export default{
         Menu
     },
 }
+
+
+
+
+
 </script>
 
 <style scoped>
+.el-table--fit el-table--striped el-table--enable-row-hover el-table--enable-row-transition el-table el-table--layout-fixed is-scrolling-none{
+  z-index:-1;
+}
 
 </style>

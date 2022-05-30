@@ -9,33 +9,10 @@ const url = 'http://localhost:3001';
 let billObject = {
   _id: '',
   name: '',
-  user: {},
   amount: 0,
 };
 
-let userObject = {
-  _id: '',
-  username: '',
-  email: '',
-};
-
 describe('Bill controller test', () => {
-  it('Prepare a dummy user', (done) => {
-    chai
-      .request(url)
-      .post('/api/user')
-      .send({
-        username: 'testuser',
-        email: 'test@user.com',
-      })
-      .end((err, res) => {
-        expect(res.status).to.equal(201);
-        expect(res.body.username).to.equal('testuser');
-        expect(res.body.email).to.equal('test@user.com');
-        userObject = res.body;
-        done();
-      });
-  });
   it('Should be able to create a bill', (done) => {
     chai
       .request(url)
@@ -43,7 +20,6 @@ describe('Bill controller test', () => {
       .send({
         name: 'Test bill',
         amount: 100,
-        user: userObject,
       })
       .end((err, res) => {
         billObject = res.body;
@@ -106,17 +82,6 @@ describe('Bill controller test', () => {
       .end((err, res) => {
         expect(res).to.have.status(404);
         expect(res.body).to.have.property('error').eql('Bill not found');
-        done();
-      });
-  });
-
-  it('Cleanup test data', (done) => {
-    chai
-      .request(url)
-      .delete('/api/user')
-      .send({ _id: userObject._id })
-      .end((err, res) => {
-        expect(res).to.have.status(200);
         done();
       });
   });

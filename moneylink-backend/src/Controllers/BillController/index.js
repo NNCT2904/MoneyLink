@@ -1,13 +1,12 @@
 const { Bill } = require('../../Models');
 
 const createBill = async (req, res) => {
-  const { name, user, amount } = req.body;
+  const { name, amount } = req.body;
 
-  if (!name || !user || !amount) return res.status(400).json({ error: 'Missing parameter "name" or "user" or "amount"' });
+  if (!name || !amount) return res.status(400).json({ error: 'Missing parameter "name" or "amount"' });
 
   const bill = new Bill({
     name: name,
-    user: user,
     amount: amount,
   });
 
@@ -15,7 +14,7 @@ const createBill = async (req, res) => {
 };
 
 const getBill = async (req, res) => {
-  const { _id } = req.query._id ? req.query : req.body;
+  const { _id } = req.body;
 
   if (!_id) return res.status(400).json({ error: 'Missing parameter "id"' });
 
@@ -28,11 +27,11 @@ const getBill = async (req, res) => {
 };
 
 const updateBill = async (req, res) => {
-  const { _id, name, user, amount } = req.body;
+  const { _id, name, amount } = req.body;
 
   if (!_id) return res.status(400).json({ error: 'Missing parameter "id"' });
 
-  // if (!name || !user || !amount) return res.status(400).json({ error: 'Missing parameter "name" or "user" or "amount"' });
+  if (!name || !amount) return res.status(400).json({ error: 'Missing parameter "name" or "amount"' });
 
   await Bill.findByIdAndUpdate(_id, req.body);
 
