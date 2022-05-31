@@ -13,7 +13,7 @@
         <label style="font-size: 120%; margin-right: 20px">
           <b>Get started:</b>
         </label>
-        <el-button type="primary" size="large" @click="createNewGroupEvent">Create a new Group</el-button>
+        <el-button type="primary" size="large" @click="createNewGroupEvent">Log in / Sign in</el-button>
       </div>
     </el-row>
     <el-row style="font-family: 'Cantarell'; text-align: justify; font-size: 115%; margin-top: 40px">
@@ -46,13 +46,16 @@ export default {
 },
 methods: {
     createNewGroupEvent () {
-      this.$router.push({name: 'CreateGroupEvent'})
+      this.$router.push({name: 'LogIn'})
     }
   },
   created () {
     document.title = 'Money link: Split Expenses with your Friends'
   },
     data(){
+      return{
+        
+      }
         
     }
     

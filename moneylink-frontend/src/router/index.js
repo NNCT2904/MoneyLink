@@ -5,7 +5,7 @@ import LogIn from '../views/LogIn.vue'
 import SignUp from '../views/SignUp.vue'
 import test from '../views/test.vue'
 import Home from '../views/Homepage.vue'
-import CreateGroupEvent from '../views/CreateGroupEvent.vue'
+
 const routes = [
   {
     path:'/signup',
@@ -16,7 +16,7 @@ const routes = [
     }
   },
   {
-    path: '/',
+    path: '/Login',
     name: 'LogIn',
     component: LogIn,
     meta:{
@@ -29,14 +29,9 @@ const routes = [
     component: test
   },
   {
-    path: '/Home',
+    path: '/',
     name: 'Home',
     component: Home
-  },
-  {
-    path: '/groupEvents',
-    name: 'CreateGroupEvent',
-    component: CreateGroupEvent
   },
   {
     path: '/household',

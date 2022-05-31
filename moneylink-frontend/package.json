@@ -17,6 +17,7 @@
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
     "vue": "^3.2.13",
+    "vue-i18n": "^9.1.10",
     "vue-resize": "^1.0.1",
     "vue-router": "^4.0.3",
     "vuelidate": "^0.7.7",
