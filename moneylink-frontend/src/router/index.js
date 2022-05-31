@@ -1,15 +1,18 @@
+
 import { createRouter, createWebHistory } from 'vue-router'
 import HouseHold from '../views/HouseHold.vue'
 import LogIn from '../views/LogIn.vue'
 import SignUp from '../views/SignUp.vue'
 import test from '../views/test.vue'
+import Home from '../views/Homepage.vue'
+import CreateGroupEvent from '../views/CreateGroupEvent.vue'
 const routes = [
   {
     path:'/signup',
     name:'SignUp',
     component: SignUp,
     meta:{
-      isLogin: false
+      //isLogin: false
     }
   },
   {
@@ -17,7 +20,7 @@ const routes = [
     name: 'LogIn',
     component: LogIn,
     meta:{
-      isLogin: false
+      //isLogin: false
     }
   },
   {
@@ -26,11 +29,21 @@ const routes = [
     component: test
   },
   {
+    path: '/Home',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/groupEvents',
+    name: 'CreateGroupEvent',
+    component: CreateGroupEvent
+  },
+  {
     path: '/household',
     name: 'HouseHold',
     component: HouseHold,
     meta:{
-      isLogin: true
+      //isLogin: true
     }
   },
   {
@@ -41,7 +54,7 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Groups.vue'),
     meta:{
-      isLogin: true
+      //isLogin: true
     }
   },
   {
@@ -52,7 +65,7 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Friends.vue'),
     meta:{
-      isLogin: true
+      //isLogin: true
     }
   }
 ]

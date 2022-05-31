@@ -12,15 +12,34 @@
             </el-select>
         </el-form-item>
         <el-form-item label="Group Members:">
-            
+            <el-form-item
+                    v-for="(domain, index) in dynamicValidateForm.domains"
+                    :key="domain.key"
+                    :label="'Domain' + index"
+                    :prop="'domains.' + index + '.value'"
+                    :rules="{
+                    required: true,
+                    message: 'domain can not be null',
+                    trigger: 'blur',
+                }">
+            <el-input v-model="domain.value" />
+            <el-button class="mt-2" @click.prevent="removeDomain(domain)"
+            >Delete</el-button>
+        </el-form-item>
+        </el-form-item>
+        <el-form-item>
+              <formtest />
         </el-form-item>
     </div>
+    <el-form-item>
+
+    </el-form-item>
     </el-form>
 </template>
 
 <script>
 
-import GroupMembers from '@/components/GroupMembers'
+import formtest from '@/components/formtest.vue'
 import GroupBillSplitterService from '@/services/groupbillsplitterservice'
 import { required } from 'vuelidate/lib/validators'
 
@@ -42,11 +61,18 @@ export default {
     }
   },
   components: {
+      formtest
     //Biaodantest
     //'enter-group-members-form': GroupMembers
     },
   methods: {
-   
+
+   addMember () {
+      if (this.groupMemberName) {
+        this.groupMembers.push({name: this.groupMemberName})
+        this.groupMemberName = ''
+      }
+    }
   }
 }
 </script>
