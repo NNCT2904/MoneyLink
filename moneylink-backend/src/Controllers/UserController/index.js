@@ -13,11 +13,11 @@ const createUser = async (req, res) => {
 };
 
 const getUser = async (req, res) => {
- // const { _id } = req.body;
+  const { _id } = req.query._id ? req.query : req.body;
 
-  //if (!_id) return res.status(400).json({ error: 'Missing parameter "id"' });
+  if (!_id) return res.status(400).json({ error: 'Missing parameter "id"' });
 
-  return await User.findAll({attributes: ['id', 'name']})
+  return await User.findById(_id)
     .then((user) => {
       if (!user) return res.status(404).json({ error: 'User not found' });
       return res.status(200).json(user);
@@ -52,4 +52,4 @@ module.exports = {
   getUser,
   updateUser,
   deleteUser,
-}
+};

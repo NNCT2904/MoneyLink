@@ -46,10 +46,6 @@ export default {
     {
       alert("Log in successfully!")
       sessionStorage.setItem('user_name',response.data[0].name)
-sessionStorage.setItem('id',response.data[0]._id)
-      sessionStorage.setItem('user',JSON.stringify(response.data))
-alert(response.data[0])
-
       sessionStorage.setItem('token',true)
       window.location.href="/household"
     }
