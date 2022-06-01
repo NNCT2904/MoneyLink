@@ -6,12 +6,71 @@
     <div style="margin: 10px; margin-left:30%">
       <el-input v-model="searchTable" placeholder="Enter your key words" style="width:20%"></el-input>
       <el-button type="primary" style="margin: 5px">Search</el-button>
-      <el-button type="primary">Create</el-button>
+      <el-button type="primary" @click="dialogBill = true" class="addBtn">Add Bill</el-button>
+      <el-button type="primary" @click="dialogDeleteBill = true" class="addBtn">Delete Bill</el-button>
+      <el-button type="primary" @click="dialogUser = true" class="addBtn">Edit Members</el-button>
     </div>
+    <el-dialog
+  title="Add Bill"
+  v-model="dialogBill"
+  width="30%">
+  <el-form ref="form1" :model="form1" label-width="120px">
+  <el-form-item label="Name">
+    <el-input v-model="form1.name"></el-input>
+  </el-form-item>
+  <el-form-item label="Amount">
+    <el-input v-model="form1.amount"></el-input>
+  </el-form-item>
+  <el-form-item>
+    <el-button type="primary" @click="onSubmit">Create</el-button>
+    <el-button>Cancel</el-button>
+  </el-form-item>
+</el-form>
+</el-dialog>
+<el-dialog
+  title="Delete Bill"
+  v-model="dialogDeleteBill"
+  width="30%">
+  <el-form ref="form3" :model="form3" label-width="120px">
+  <el-form-item label="Name">
+    <el-input v-model="form3.name"></el-input>
+  </el-form-item>
+  <el-form-item>
+    <el-button type="primary" @click="onSubmit">Delete</el-button>
+    <el-button>Cancel</el-button>
+  </el-form-item>
+</el-form>
+</el-dialog>
+<el-dialog
+  title="Edit Members"
+  v-model="dialogUser"
+  width="30%">
+  <el-form ref="form2" :model="form2" label-width="120px">
+  <el-form-item label="Name">
+    <el-input v-model="form2.name"></el-input>
+  </el-form-item>
+  <el-form-item>
+    <el-button type="primary" @click="onSubmit">Create</el-button>
+    <el-button type="primary">Delete</el-button>
+  </el-form-item>
+</el-form>
+</el-dialog>
     <el-table :data="tableData" stripe style="width: 100%">
-    <el-table-column prop="date" align="center" label="Date" width="250" sortable/>
-    <el-table-column prop="amount" align="center" label="Amount" width="250" />
-    <el-table-column prop="description" align="center" label="Description" />
+    <el-table-column prop="household" align="center" label="Household" width="250"/>
+    <el-table-column prop="bill" align="center" label="Bill"/>
+    <el-table-column prop="members" align="center" label="Members">
+    </el-table-column>
+    <el-table-column fixed="right" label="Action" width="120">
+      <template>
+        <el-button
+          @click="Split()"
+          type="text"
+          size="small"
+        >
+        Split the bill
+        </el-button>
+      </template>
+    </el-table-column>
   </el-table>
   </div>
   </div>
@@ -30,35 +89,39 @@ export default {
   },
   data(){
     searchTable: ''
+    var bill=sessionStorage.getItem('billName0')+', '
+    for(var i=1;i<sessionStorage.getItem('bill_length');i++){
+      bill=bill+sessionStorage.getItem('billName'+i)+', ';
+    }
+    var member=sessionStorage.getItem('memberName0')+', '
+    for(var i=1;i<sessionStorage.getItem('member_length');i++){
+      member=member+sessionStorage.getItem('memberName'+i)+', ';
+    }
     return{
+      form1: {
+          name: '',
+          amount: '',
+        },
+      form2: {
+          name: '',
+        },
+      form3: {
+          name: '',
+        },
       tableData:[
   {
-    date: '2016-05-03',
-    amount: '10',
-    description: 'Coles Uid111',
+    household: sessionStorage.getItem('user_email'),
+    bill: bill,
+    members: member,
   },
-  {
-    date: '2016-05-02',
-    amount: '20',
-    description: 'BigW Uid112',
-  },
-  {
-    date: '2016-05-04',
-    amount: '30',
-    description: 'Kmart Uid113',
-  },
-  {
-    date: '2016-05-01',
-    amount: '30',
-    description: 'Myki Uid114',
-  },
-]
+],
+dialogBill: false,
+dialogDeleteBill: false,
+dialogUser: false,
     }
-  }
-  
+  },
 }
 </script>
 
 <style>
-
 </style>

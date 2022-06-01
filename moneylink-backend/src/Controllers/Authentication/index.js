@@ -21,6 +21,17 @@ const login = async (req, res) => {
   if (!email) return res.status(400).json({ error: 'Missing parameter "email"' });
 
   return await Household.find({ email: email })
+    .populate({
+      path: 'bills',
+      populate: {
+        path: 'user',
+        select: { username: 1, _id: 1 },
+      },
+    })
+    .populate({
+      path: 'members',
+      select: { username: 1, _id: 1 },
+    })
     .then((household) => {
       if (household.length < 1) return res.status(404).json({ error: 'Household not found' });
       return res.status(200).json(household);

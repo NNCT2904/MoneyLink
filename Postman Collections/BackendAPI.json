@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "14936ff2-c14d-417a-9e92-109528c957d4",
+		"_postman_id": "8236460c-d780-4ee4-abd1-2e72e0d2c175",
 		"name": "Backend API",
 		"description": "This page contains documents for Money Link APIs for local development.\n\nFor more information, check out our git repository: [https://github.com/NNCT2904/MoneyLink](https://github.com/NNCT2904/MoneyLink)",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16215855"
 	},
 	"item": [
 		{
@@ -11,10 +12,6 @@
 			"item": [
 				{
 					"name": "Signup",
-					"id": "88fa8e0a-10e0-4635-b01c-0b814d79075f",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -27,12 +24,22 @@
 								}
 							}
 						},
-						"url": "http://localhost:3001/api/signup",
+						"url": {
+							"raw": "http://localhost:3001/api/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"signup"
+							]
+						},
 						"description": "The mockup signup function does not require password. This API creates a new household with user email and the household name."
 					},
 					"response": [
 						{
-							"id": "aeb4fd92-545b-4c5f-9d5f-911ef99bcff7",
 							"name": "Signup",
 							"originalRequest": {
 								"method": "POST",
@@ -46,7 +53,18 @@
 										}
 									}
 								},
-								"url": "http://localhost:3001/api/signup"
+								"url": {
+									"raw": "http://localhost:3001/api/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"signup"
+									]
+								}
 							},
 							"status": "Created",
 							"code": 201,
@@ -86,35 +104,40 @@
 								}
 							],
 							"cookie": [],
-							"responseTime": null,
 							"body": "{\n    \"name\": \"test name\",\n    \"email\": \"testemail@example.com\",\n    \"members\": [],\n    \"bills\": [],\n    \"_id\": \"627fe28c4669fbccb0c5ebb1\",\n    \"__v\": 0\n}"
 						}
 					]
 				},
 				{
 					"name": "Login",
-					"id": "141b47a5-528c-4f97-bbc3-9f1d082e1bbe",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":  \"testemail@example.com\"\n}",
+							"raw": "{\n    \"email\":  \"HiAli@example.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:3001/api/login",
+						"url": {
+							"raw": "http://localhost:3001/api/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"login"
+							]
+						},
 						"description": "The mockup login function does not require password. This API finds households with matching email and returns as an array of households"
 					},
 					"response": [
 						{
-							"id": "a5192e9d-3a0c-4aec-9181-bef9aae6e5ba",
 							"name": "Login",
 							"originalRequest": {
 								"method": "POST",
@@ -128,7 +151,18 @@
 										}
 									}
 								},
-								"url": "http://localhost:3001/api/login"
+								"url": {
+									"raw": "http://localhost:3001/api/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"login"
+									]
+								}
 							},
 							"status": "OK",
 							"code": 200,
@@ -168,13 +202,11 @@
 								}
 							],
 							"cookie": [],
-							"responseTime": null,
 							"body": "[\n    {\n        \"_id\": \"6278d8f4cfc20ba694f90879\",\n        \"name\": \"test name for household\",\n        \"email\": \"testemail@example.com\",\n        \"members\": [],\n        \"bills\": [],\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"627fe28c4669fbccb0c5ebb1\",\n        \"name\": \"test name\",\n        \"email\": \"testemail@example.com\",\n        \"members\": [],\n        \"bills\": [],\n        \"__v\": 0\n    }\n]"
 						}
 					]
 				}
 			],
-			"id": "c1182b98-b244-4ade-82d7-43436a6bd9c2",
 			"description": "To be added"
 		},
 		{
@@ -182,10 +214,6 @@
 			"item": [
 				{
 					"name": "Create",
-					"id": "873918bc-4162-4cb6-b811-f72d63ed048f",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -198,12 +226,22 @@
 								}
 							}
 						},
-						"url": "http://localhost:3001/api/household",
+						"url": {
+							"raw": "http://localhost:3001/api/household",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"household"
+							]
+						},
 						"description": "The backend create a household document and store it in the database. PLease refer to example provided for an example result."
 					},
 					"response": [
 						{
-							"id": "72f82db7-7c43-4860-aec0-70d1d91eeede",
 							"name": "Create",
 							"originalRequest": {
 								"method": "POST",
@@ -217,7 +255,18 @@
 										}
 									}
 								},
-								"url": "http://localhost:3001/api/household"
+								"url": {
+									"raw": "http://localhost:3001/api/household",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"household"
+									]
+								}
 							},
 							"status": "Created",
 							"code": 201,
@@ -257,14 +306,12 @@
 								}
 							],
 							"cookie": [],
-							"responseTime": null,
 							"body": "{\n    \"name\": \"test name\",\n    \"email\": \"testemail@example.com\",\n    \"members\": [],\n    \"bills\": [],\n    \"_id\": \"62774ad33beba3a23a787a7b\",\n    \"__v\": 0\n}"
 						}
 					]
 				},
 				{
 					"name": "Find",
-					"id": "195376fe-f588-4f79-a1dd-14f6b0d4a67f",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -273,32 +320,47 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":  \"testemail@example.com\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": ""
 						},
-						"url": "http://localhost:3001/api/findhousehold"
+						"url": {
+							"raw": "http://localhost:3001/api/findhousehold/?email=HiAli@example.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"findhousehold",
+								""
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "HiAli@example.com"
+								}
+							]
+						},
+						"description": "Find the household based on email. You can put the email in the body or in the url."
 					},
 					"response": [
 						{
-							"id": "a9224be4-2152-4ec8-9c90-1110f33dc6fe",
 							"name": "Find",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"email\":  \"testemail@example.com\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "http://localhost:3001/api/findhousehold"
+								"url": {
+									"raw": "http://localhost:3001/api/findhousehold",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"findhousehold"
+									]
+								}
 							},
 							"status": "OK",
 							"code": 200,
@@ -342,14 +404,81 @@
 									"expires": "Invalid Date"
 								}
 							],
-							"responseTime": null,
 							"body": "[\n    {\n        \"_id\": \"62774ad33beba3a23a787a7b\",\n        \"name\": \"test name\",\n        \"email\": \"testemail@example.com\",\n        \"members\": [],\n        \"bills\": [],\n        \"__v\": 0\n    }\n]"
+						},
+						{
+							"name": "Find with url query",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/findhousehold/?email=tommy@tao.com",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"findhousehold",
+										""
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": "tommy@tao.com"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "107"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6b-y94D/rzilUCHnEZeQJI2LT5bMic\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 May 2022 03:21:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "[\n    {\n        \"_id\": \"628187bcc52c5e7c1649a608\",\n        \"name\": \"tommy\",\n        \"email\": \"tommy@tao.com\",\n        \"members\": [],\n        \"bills\": [],\n        \"__v\": 0\n    }\n]"
 						}
 					]
 				},
 				{
 					"name": "Get",
-					"id": "3b7ecca3-3076-4ac1-a7f2-e55d3936cd16",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -358,32 +487,50 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_id\": \"6267753fd30b15eab31ae4db\"\n}",
+							"raw": "{\n    \"_id\": \"628ce26147213bdac3353769\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:3001/api/household"
+						"url": {
+							"raw": "http://localhost:3001/api/household?_id=628ce26147213bdac3353769",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"household"
+							],
+							"query": [
+								{
+									"key": "_id",
+									"value": "628ce26147213bdac3353769"
+								}
+							]
+						}
 					},
 					"response": [
 						{
-							"id": "f97051b5-503c-4806-8995-ff93a8c4e12a",
 							"name": "Get a household based on id",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"_id\": \"6267753fd30b15eab31ae4db\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "http://localhost:3001/api/household"
+								"url": {
+									"raw": "http://localhost:3001/api/household",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"household"
+									]
+								}
 							},
 							"status": "OK",
 							"code": 200,
@@ -427,35 +574,40 @@
 									"expires": "Invalid Date"
 								}
 							],
-							"responseTime": null,
 							"body": "{\n    \"_id\": \"6267753fd30b15eab31ae4db\",\n    \"name\": \"changed name\",\n    \"members\": [],\n    \"bills\": [],\n    \"__v\": 0\n}"
 						}
 					]
 				},
 				{
 					"name": "Update",
-					"id": "f6f8e0c5-844d-45c6-9186-65e925316c9b",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n   \"_id\": \"6267753fd30b15eab31ae4db\",\n   \"name\": \"changed name\",\n   \"members\": [],\n    \"bills\": []\n}",
+							"raw": "{\n    \"_id\": \"628ce26147213bdac3353769\",\n    \"name\": \"HiAli\",\n    \"email\": \"HiAli@example.com\",\n    \"members\": [\n        {\n            \"_id\": \"628ce31547213bdac335376d\",\n            \"username\": \"Ali\",\n            \"email\": \"ali@example.com\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"629364a833778ba1d64b896a\",\n            \"username\": \"newuser\",\n            \"email\": \"newuser@example.com\",\n            \"__v\": 0\n        }\n    ],\n    \"bills\": [\n        {\n            \"_id\": \"6293668833778ba1d64b8972\",\n            \"name\": \"uber stuff\",\n            \"user\": \"629364a833778ba1d64b896a\",\n            \"amount\": 100,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6296c51213fd20806620b656\",\n            \"name\": \"new test bill\",\n            \"user\": \"629364a833778ba1d64b896a\",\n            \"amount\": 100,\n            \"__v\": 0\n        },\n        \"628ecee08ab57e406a277c3a\"\n    ],\n    \"__v\": 0\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:3001/api/household",
+						"url": {
+							"raw": "http://localhost:3001/api/household",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"household"
+							]
+						},
 						"description": "This API is used to change a household detail. Things can be changed are: `name` as string, `members` as array and the `bills` record as array.\n\nFor example, we can add or remove some bills or members."
 					},
 					"response": [
 						{
-							"id": "b561f315-16bc-4980-9200-502944311c8e",
 							"name": "Update the household name",
 							"originalRequest": {
 								"method": "PUT",
@@ -469,7 +621,18 @@
 										}
 									}
 								},
-								"url": "http://localhost:3001/api/household"
+								"url": {
+									"raw": "http://localhost:3001/api/household",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"household"
+									]
+								}
 							},
 							"status": "OK",
 							"code": 200,
@@ -513,17 +676,12 @@
 									"expires": "Invalid Date"
 								}
 							],
-							"responseTime": null,
 							"body": "{\n    \"_id\": \"6267753fd30b15eab31ae4db\",\n    \"name\": \"changed name\",\n    \"members\": [],\n    \"bills\": [],\n    \"__v\": 0\n}"
 						}
 					]
 				},
 				{
 					"name": "Delete",
-					"id": "df248ac1-ba0d-483b-97ba-b4c4ea1c37ba",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -536,12 +694,22 @@
 								}
 							}
 						},
-						"url": "http://localhost:3001/api/household",
+						"url": {
+							"raw": "http://localhost:3001/api/household",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"household"
+							]
+						},
 						"description": "Pass the _id parameter to body to delete that specific household."
 					},
 					"response": [
 						{
-							"id": "9d834e9b-820f-41a0-9e57-eebbb372b7a0",
 							"name": "Delete a household based on id",
 							"originalRequest": {
 								"method": "DELETE",
@@ -555,7 +723,18 @@
 										}
 									}
 								},
-								"url": "http://localhost:3001/api/household"
+								"url": {
+									"raw": "http://localhost:3001/api/household",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"household"
+									]
+								}
 							},
 							"status": "OK",
 							"code": 200,
@@ -599,13 +778,170 @@
 									"expires": "Invalid Date"
 								}
 							],
-							"responseTime": null,
 							"body": "{\n    \"_id\": \"6268ed7e8b2e6327e48b0c58\",\n    \"name\": \"a name, delete later \",\n    \"members\": [],\n    \"bills\": [],\n    \"__v\": 0\n}"
 						}
 					]
+				},
+				{
+					"name": "Split",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"628ce26147213bdac3353769\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/household/split",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"household",
+								"split"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Member",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"householdId\": \"628ce26147213bdac3353769\",\n    \"userId\": \"6296d13050700685caf935b0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/household/addMember",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"household",
+								"addMember"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Member",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"householdId\": \"628ce26147213bdac3353769\",\n    \"userId\": \"6296d13050700685caf935b0\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/household/addMember",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"household",
+										"addMember"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "242"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f2-/jv0kZhPac3UqSIZPCuS/vpZkL8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 01 Jun 2022 02:39:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"628ce26147213bdac3353769\",\n    \"name\": \"HiAli\",\n    \"email\": \"HiAli@example.com\",\n    \"members\": [\n        \"628ce31547213bdac335376d\",\n        \"629364a833778ba1d64b896a\"\n    ],\n    \"bills\": [\n        \"6293668833778ba1d64b8972\",\n        \"6296c51213fd20806620b656\",\n        \"628ecee08ab57e406a277c3a\"\n    ],\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Add bill",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"householdId\": \"628ce26147213bdac3353769\",\n    \"userId\":\"6296d13050700685caf935b0\",\n    \"name\":\"This is another bill\",\n    \"amount\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/household/addBill",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"household",
+								"addBill"
+							]
+						}
+					},
+					"response": []
 				}
 			],
-			"id": "09313e0d-5267-4beb-a3ea-ae9f6799e952",
 			"description": "These Household APIs allow to manage household."
 		},
 		{
@@ -613,27 +949,33 @@
 			"item": [
 				{
 					"name": "Create bill",
-					"id": "421b1118-bb0f-4a87-b894-d6b8e705aeae",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"test bill\",\n    \"amount\": 100\n}",
+							"raw": "{\n    \"user\": \"6296d13050700685caf935b0\",\n    \"name\": \"new kek bill\",\n    \"amount\": 50\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:3001/api/bill"
+						"url": {
+							"raw": "http://localhost:3001/api/bill",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"bill"
+							]
+						}
 					},
 					"response": [
 						{
-							"id": "afd9a6f0-6b32-4dcb-910e-7619f88c7d1c",
 							"name": "Create bill",
 							"originalRequest": {
 								"method": "POST",
@@ -647,7 +989,18 @@
 										}
 									}
 								},
-								"url": "http://localhost:3001/api/bill"
+								"url": {
+									"raw": "http://localhost:3001/api/bill",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"bill"
+									]
+								}
 							},
 							"status": "Created",
 							"code": 201,
@@ -691,14 +1044,12 @@
 									"expires": "Invalid Date"
 								}
 							],
-							"responseTime": null,
 							"body": "{\n    \"name\": \"test bill\",\n    \"amount\": 100,\n    \"_id\": \"62709c1018540c08c19146e4\",\n    \"__v\": 0\n}"
 						}
 					]
 				},
 				{
 					"name": "Get Bill",
-					"id": "ceb5d729-4383-47cf-858e-9a2faf7a6abb",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -714,25 +1065,37 @@
 								}
 							}
 						},
-						"url": "http://localhost:3001/api/bill"
+						"url": {
+							"raw": "http://localhost:3001/api/bill",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"bill"
+							]
+						}
 					},
 					"response": [
 						{
-							"id": "49a23d65-07cb-424c-8c17-5d8b0fe1d238",
 							"name": "Get Bill",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"_id\": \"62709c1018540c08c19146e4\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "http://localhost:3001/api/bill"
+								"url": {
+									"raw": "http://localhost:3001/api/bill",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"bill"
+									]
+								}
 							},
 							"status": "OK",
 							"code": 200,
@@ -772,34 +1135,103 @@
 								}
 							],
 							"cookie": [],
-							"responseTime": null,
 							"body": "{\n    \"_id\": \"62709c1018540c08c19146e4\",\n    \"name\": \"test bill\",\n    \"amount\": 100,\n    \"__v\": 0\n}"
+						},
+						{
+							"name": "Get Bill with url query",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/bill?_id=628ecee08ab57e406a277c3a",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"bill"
+									],
+									"query": [
+										{
+											"key": "_id",
+											"value": "628ecee08ab57e406a277c3a"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "108"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6c-XONJ6WJ9H3njjwI70pAhgtGRnkw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 May 2022 03:32:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"628ecee08ab57e406a277c3a\",\n    \"name\": \"test bill\",\n    \"user\": \"628ce31547213bdac335376d\",\n    \"amount\": 100,\n    \"__v\": 0\n}"
 						}
 					]
 				},
 				{
 					"name": "Update Bill",
-					"id": "5422ed95-373b-4079-9043-19f15100d064",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_id\": \"62709c1018540c08c19146e4\",\n    \"name\": \"changed name\",\n    \"amount\": 200\n}",
+							"raw": "{\n    \"_id\": \"628ecee08ab57e406a277c3a\",\n    \"name\": \"changed name\",\n    \"amount\": 200\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:3001/api/bill"
+						"url": {
+							"raw": "http://localhost:3001/api/bill",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"bill"
+							]
+						}
 					},
 					"response": [
 						{
-							"id": "b4adb717-cb1f-4bd1-b1e7-001248a5bc04",
 							"name": "Update Bill",
 							"originalRequest": {
 								"method": "PUT",
@@ -813,7 +1245,18 @@
 										}
 									}
 								},
-								"url": "http://localhost:3001/api/bill"
+								"url": {
+									"raw": "http://localhost:3001/api/bill",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"bill"
+									]
+								}
 							},
 							"status": "OK",
 							"code": 200,
@@ -853,17 +1296,12 @@
 								}
 							],
 							"cookie": [],
-							"responseTime": null,
 							"body": "{\n    \"_id\": \"62709c1018540c08c19146e4\",\n    \"name\": \"changed name\",\n    \"amount\": 200,\n    \"__v\": 0\n}"
 						}
 					]
 				},
 				{
 					"name": "Delete Bill",
-					"id": "3e3f0f02-e75c-4d17-b763-1101427ae4d2",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -876,11 +1314,21 @@
 								}
 							}
 						},
-						"url": "http://localhost:3001/api/bill"
+						"url": {
+							"raw": "http://localhost:3001/api/bill",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"bill"
+							]
+						}
 					},
 					"response": [
 						{
-							"id": "c7a16363-5021-448c-97de-5dfd34975113",
 							"name": "Delete Bill",
 							"originalRequest": {
 								"method": "DELETE",
@@ -894,7 +1342,18 @@
 										}
 									}
 								},
-								"url": "http://localhost:3001/api/bill"
+								"url": {
+									"raw": "http://localhost:3001/api/bill",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"bill"
+									]
+								}
 							},
 							"status": "OK",
 							"code": 200,
@@ -934,40 +1393,44 @@
 								}
 							],
 							"cookie": [],
-							"responseTime": null,
 							"body": "{\n    \"_id\": \"62709c1018540c08c19146e4\",\n    \"name\": \"changed name\",\n    \"amount\": 200,\n    \"__v\": 0\n}"
 						}
 					]
 				}
-			],
-			"id": "56a837cf-aa91-4e16-ac45-c0164ef28aaa"
+			]
 		},
 		{
 			"name": "User Controller",
 			"item": [
 				{
 					"name": "Create User",
-					"id": "ee697581-4155-4e84-81a3-5b0465a7b98e",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"username\",\n    \"email\": \"email@example.com\"\n}",
+							"raw": "{\n    \"username\": \"third-user\",\n    \"email\": \"email@example.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:3001/api/user"
+						"url": {
+							"raw": "http://localhost:3001/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"user"
+							]
+						}
 					},
 					"response": [
 						{
-							"id": "29940c0e-a8aa-48b7-a06d-8ff3c550daeb",
 							"name": "Create User",
 							"originalRequest": {
 								"method": "POST",
@@ -981,7 +1444,18 @@
 										}
 									}
 								},
-								"url": "http://localhost:3001/api/user"
+								"url": {
+									"raw": "http://localhost:3001/api/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"user"
+									]
+								}
 							},
 							"status": "Created",
 							"code": 201,
@@ -1025,14 +1499,12 @@
 									"expires": "Invalid Date"
 								}
 							],
-							"responseTime": null,
 							"body": "{\n    \"username\": \"username\",\n    \"email\": \"email@example.com\",\n    \"_id\": \"62709ce818540c08c19146ea\",\n    \"__v\": 0\n}"
 						}
 					]
 				},
 				{
 					"name": "Get User",
-					"id": "a254fa29-967a-4e24-b93d-6c0f8227398b",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1041,32 +1513,44 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_id\": \"62709ce818540c08c19146ea\"\n}",
+							"raw": "{\n    \"_id\": \"629364a833778ba1d64b896a\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:3001/api/user"
+						"url": {
+							"raw": "http://localhost:3001/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"user"
+							]
+						}
 					},
 					"response": [
 						{
-							"id": "d8977b6b-9e5c-4d8c-9430-f2c91b7de7c4",
 							"name": "Get User",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"_id\": \"62709ce818540c08c19146ea\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "http://localhost:3001/api/user"
+								"url": {
+									"raw": "http://localhost:3001/api/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"user"
+									]
+								}
 							},
 							"status": "OK",
 							"code": 200,
@@ -1110,17 +1594,76 @@
 									"expires": "Invalid Date"
 								}
 							],
-							"responseTime": null,
 							"body": "{\n    \"_id\": \"62709ce818540c08c19146ea\",\n    \"username\": \"username\",\n    \"email\": \"email@example.com\",\n    \"__v\": 0\n}"
+						},
+						{
+							"name": "Get User with url query",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3001/api/user?_id=628ce31547213bdac335376d",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"user"
+									],
+									"query": [
+										{
+											"key": "_id",
+											"value": "628ce31547213bdac335376d"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-LG1p2DgrTBqnXFBpHCSuQt2xeho\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 27 May 2022 03:33:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"628ce31547213bdac335376d\",\n    \"username\": \"Ali\",\n    \"email\": \"ali@example.com\",\n    \"__v\": 0\n}"
 						}
 					]
 				},
 				{
 					"name": "Update User",
-					"id": "4e4fc669-6cdb-4ab1-bd90-4e7e545f6fae",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -1133,11 +1676,21 @@
 								}
 							}
 						},
-						"url": "http://localhost:3001/api/user"
+						"url": {
+							"raw": "http://localhost:3001/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"user"
+							]
+						}
 					},
 					"response": [
 						{
-							"id": "1fc64930-6580-4cd9-a979-3cb9cfd5c2d0",
 							"name": "Update User",
 							"originalRequest": {
 								"method": "PUT",
@@ -1151,7 +1704,18 @@
 										}
 									}
 								},
-								"url": "http://localhost:3001/api/user"
+								"url": {
+									"raw": "http://localhost:3001/api/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"user"
+									]
+								}
 							},
 							"status": "OK",
 							"code": 200,
@@ -1195,17 +1759,12 @@
 									"expires": "Invalid Date"
 								}
 							],
-							"responseTime": null,
 							"body": "{\n    \"_id\": \"62709ce818540c08c19146ea\",\n    \"username\": \"change their name\",\n    \"email\": \"change@example.com\",\n    \"__v\": 0\n}"
 						}
 					]
 				},
 				{
 					"name": "Delete User",
-					"id": "70e81b37-3b25-47e8-8d1e-ceed2c1a63c2",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -1218,11 +1777,21 @@
 								}
 							}
 						},
-						"url": "http://localhost:3001/api/user"
+						"url": {
+							"raw": "http://localhost:3001/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"user"
+							]
+						}
 					},
 					"response": [
 						{
-							"id": "6862fa4f-a5f1-463f-97c5-84360900be93",
 							"name": "Delete User",
 							"originalRequest": {
 								"method": "DELETE",
@@ -1236,7 +1805,18 @@
 										}
 									}
 								},
-								"url": "http://localhost:3001/api/user"
+								"url": {
+									"raw": "http://localhost:3001/api/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"user"
+									]
+								}
 							},
 							"status": "OK",
 							"code": 200,
@@ -1280,24 +1860,29 @@
 									"expires": "Invalid Date"
 								}
 							],
-							"responseTime": null,
 							"body": "{\n    \"_id\": \"62709ce818540c08c19146ea\",\n    \"username\": \"change their name\",\n    \"email\": \"change@example.com\",\n    \"__v\": 0\n}"
 						}
 					]
 				}
-			],
-			"id": "ec71f439-4d4e-4a06-8d51-2aafd0c90f90"
+			]
 		},
 		{
 			"name": "ping",
-			"id": "decaa3f8-90e5-4501-bc6c-21655804bdaf",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"method": "GET",
 				"header": [],
-				"url": "http://localhost:3001/api/ping"
+				"url": {
+					"raw": "http://localhost:3001/api/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"ping"
+					]
+				}
 			},
 			"response": []
 		}
