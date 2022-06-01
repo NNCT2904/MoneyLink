@@ -20,6 +20,9 @@ appRouter.get('/findHousehold', HouseholdController.findHousehold);
 appRouter.get('/household', HouseholdController.getHousehold);
 appRouter.put('/household', HouseholdController.updateHousehold);
 appRouter.delete('/household', HouseholdController.deleteHousehold);
+appRouter.post('/household/addMember', HouseholdController.addMember);
+appRouter.post('/household/addBill', HouseholdController.addBill);
+appRouter.post('/household/resetHousehold', HouseholdController.resetHousehold);
 
 // Bill APIs
 appRouter.post('/bill', BillController.createBill);
