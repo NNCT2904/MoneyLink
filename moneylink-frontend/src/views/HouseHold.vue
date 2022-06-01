@@ -12,18 +12,18 @@
       <el-button type="primary" @click="dialogUser = true" class="addBtn">Delete Members</el-button>
     </div>
     <el-dialog
-  title="Delete Bill"
+  title="Add Bill"
   v-model="dialogBill"
   width="30%">
   <el-form ref="form1" :model="form1" label-width="120px">
   <el-form-item label="Name">
-    <el-input v-model="form1.name"></el-input>
+    <el-input v-model="form1.name" placeholder="any"></el-input>
   </el-form-item>
   <el-form-item label="Amount">
-    <el-input v-model="form1.amount"></el-input>
+    <el-input v-model="form1.amount" placeholder="any"></el-input>
   </el-form-item>
-  <el-form-item label="User">
-    <el-input v-model="form1.user"></el-input>
+  <el-form-item label="User to Pay">
+    <el-input v-model="form1.user" placeholder="member0"></el-input>
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="createBill()">Create</el-button>
@@ -36,7 +36,7 @@
   width="30%">
   <el-form ref="form3" :model="form3" label-width="120px">
   <el-form-item label="Name">
-    <el-input v-model="form3.name"></el-input>
+    <el-input v-model="form3.name" placeholder="bill0"></el-input>
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="deleteBill()">Delete</el-button>
@@ -49,7 +49,7 @@
   width="30%">
   <el-form ref="form2" :model="form2" label-width="120px">
   <el-form-item label="Name">
-    <el-input v-model="form2.name"></el-input>
+    <el-input v-model="form2.name" placeholder="member0"></el-input>
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="deleteMember()">Delete</el-button>
@@ -62,10 +62,10 @@
   width="30%">
   <el-form ref="form4" :model="form4" label-width="120px">
   <el-form-item label="Name">
-    <el-input v-model="form4.name"></el-input>
+    <el-input v-model="form4.name" placeholder="any"></el-input>
   </el-form-item>
   <el-form-item label="Email">
-    <el-input v-model="form4.email"></el-input>
+    <el-input v-model="form4.email" placeholder="any"></el-input>
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="addMember()">Add</el-button>
@@ -78,15 +78,13 @@
     <el-table-column prop="members" align="center" label="Members">
     </el-table-column>
     <el-table-column fixed="right" label="Action" width="120">
-      <template #default="scope">
         <el-button
-          @click="deleteRow(scope.$index)"
+          @click="splitBill()"
           type="text"
           size="small"
         >
         Split the bill
         </el-button>
-      </template>
     </el-table-column>
   </el-table>
   </div>
@@ -107,13 +105,13 @@ export default {
   },
   data(){
     searchTable: ''
-    var bill=sessionStorage.getItem('bill0')+', '
+    var bill="bill0: "+sessionStorage.getItem('bill0')+', '
     for(var i=1;i<sessionStorage.getItem('bill_length');i++){
-      bill=bill+sessionStorage.getItem('bill'+i)+', ';
+      bill=bill+"bill"+i+": "+sessionStorage.getItem('bill'+i)+', ';
     }
-    var member=sessionStorage.getItem('member0')+', '
+    var member="member0: "+sessionStorage.getItem('member0')+', '
     for(var i=1;i<sessionStorage.getItem('member_length');i++){
-      member=member+sessionStorage.getItem('member'+i)+', ';
+      member=member+"member"+i+": "+sessionStorage.getItem('member'+i)+', ';
     }
     return{
       form1: {
@@ -231,6 +229,13 @@ dialogAddUser: false,
     console.log(error);
   });
     },
+  splitBill(){
+    axios.get('http://localhost:3001/api/household/debtCalculate?_id=627cb619d58084c8474dfb57')
+    .then(res=>{
+      console.log(res)
+      alert(res.data)
+    })
+  }
   }
 }
 
