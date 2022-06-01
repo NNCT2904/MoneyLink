@@ -15,7 +15,7 @@
         </el-form-item>
         <el-row justify="end">
           <el-form-item class="login_btn">
-            <el-button  type="primary" round plain size="large" @click="CheckAccount()">Log In</el-button>
+            <el-button  type="primary" round plain size="large" @click="logIn()">Log In</el-button>
             <el-link id="signup_link" href="/signup" >Don't have an account?</el-link>
           </el-form-item>
         </el-row>
@@ -28,16 +28,8 @@
 import axios from "axios";
 export default {
   name: "LogIn",
-  data() {
-      return {
-        form: {
-          email: '',
-          password: '',
-        },
-      }
-    },
   methods:{
-   CheckAccount(){
+   checkAccount(){
    axios.post('http://localhost:3001/api/login',{email: this.form.email})
 
   .then(function (response) {
@@ -46,6 +38,16 @@ export default {
     {
       alert("Log in successfully!")
       sessionStorage.setItem('user_name',response.data[0].name)
+      sessionStorage.setItem('user_email',response.data[0].email)
+      sessionStorage.setItem('user_id',response.data[0]._id)
+      sessionStorage.setItem('bill_length',response.data[0].bills.length)
+      for (var i=0;i<response.data[0].bills.length;i++){
+        sessionStorage.setItem('bill'+i,response.data[0].bills[i])
+      }
+      sessionStorage.setItem('member_length',response.data[0].members.length)
+      for (var i=0;i<response.data[0].members.length;i++){
+        sessionStorage.setItem('member'+i,response.data[0].members[i])
+      }
       sessionStorage.setItem('token',true)
       window.location.href="/household"
     }
@@ -55,7 +57,56 @@ export default {
     alert("Account no exist!")
   });
   },
+  getBill(bill_id,i){
+    var index=i
+   axios.get('http://localhost:3001/api/bill/?_id='+bill_id,{
+   })
+  .then(function (response) {
+    console.log(response);
+    if(response.statusText=="OK")
+    {
+        sessionStorage.setItem('billName'+index,response.data.name)
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  },
+  getMember(member_id,i){
+    var index=i
+   axios.get('http://localhost:3001/api/user/?_id='+member_id,{
+   })
+  .then(function (response) {
+    console.log(response);
+    if(response.statusText=="OK")
+    {
+        sessionStorage.setItem('memberName'+index,response.data.email)
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  },
+  logIn(){
+    this.checkAccount()
+    for(var i=0;i<sessionStorage.getItem("bill_length");){
+      this.getBill(sessionStorage.getItem("bill"+i),i)
+      i++;
+    }
+    for(var i=0;i<sessionStorage.getItem("member_length");){
+      this.getMember(sessionStorage.getItem("member"+i),i)
+      i++;
+    }
   }
+  },
+  data() {
+      return {
+        form: {
+          email: '',
+          password: '',
+        },
+      }
+    },
 };
 </script>
 
