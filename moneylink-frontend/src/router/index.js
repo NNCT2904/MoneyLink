@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HouseHold from '../views/HouseHold.vue'
 import LogIn from '../views/LogIn.vue'
 import SignUp from '../views/SignUp.vue'
-import test from '../views/test.vue'
 import Home from '../views/Homepage.vue'
 
 const routes = [
@@ -27,11 +26,6 @@ const routes = [
       isLogin: false
 
     }
-  },
-  {
-    path: '/test',
-    name: 'test',
-    component: test
   },
   {
     path: '/',
