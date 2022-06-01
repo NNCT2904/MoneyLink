@@ -38,6 +38,7 @@ export default {
     },
   methods:{
    CheckAccount(){
+   const user=this;
    axios.post('http://localhost:3001/api/login',{email: this.form.email})
 
   .then(function (response) {
@@ -45,9 +46,11 @@ export default {
     if(response.statusText=="OK")
     {
       alert("Log in successfully!")
+
       sessionStorage.setItem('user_name',response.data[0].name)
       sessionStorage.setItem('token',true)
       window.location.href="/household"
+
     }
   })
   .catch(function (error) {
