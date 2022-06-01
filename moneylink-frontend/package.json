@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
+    "ant-design-vue": "^3.2.4",
     "axios": "^0.27.2",
     "core-js": "^3.8.3",
     "element-plus": "^2.1.11",
@@ -16,7 +17,10 @@
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
     "vue": "^3.2.13",
+    "vue-i18n": "^9.1.10",
+    "vue-resize": "^1.0.1",
     "vue-router": "^4.0.3",
+    "vuelidate": "^0.7.7",
     "vuex": "^4.0.0"
   },
   "devDependencies": {

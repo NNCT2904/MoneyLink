@@ -37,6 +37,7 @@ export default {
     if(response.statusText=="OK")
     {
       alert("Log in successfully!")
+
       sessionStorage.setItem('user_name',response.data[0].name)
       sessionStorage.setItem('user_email',response.data[0].email)
       sessionStorage.setItem('user_id',response.data[0]._id)
@@ -50,6 +51,7 @@ export default {
       }
       sessionStorage.setItem('token',true)
       window.location.href="/household"
+
     }
   })
   .catch(function (error) {
