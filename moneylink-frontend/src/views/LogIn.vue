@@ -41,12 +41,12 @@ export default {
       sessionStorage.setItem('user_email',response.data[0].email)
       sessionStorage.setItem('user_id',response.data[0]._id)
       sessionStorage.setItem('bill_length',response.data[0].bills.length)
-      for (var i=0;i<response.data[0].bills.length;i++){
-        sessionStorage.setItem('bill'+i,response.data[0].bills[i])
-      }
       sessionStorage.setItem('member_length',response.data[0].members.length)
+      for (var i=0;i<response.data[0].bills.length;i++){
+        sessionStorage.setItem('bill'+i,response.data[0].bills[i]._id)
+      }
       for (var i=0;i<response.data[0].members.length;i++){
-        sessionStorage.setItem('member'+i,response.data[0].members[i])
+        sessionStorage.setItem('member'+i,response.data[0].members[i]._id)
       }
       sessionStorage.setItem('token',true)
       window.location.href="/household"
@@ -57,46 +57,8 @@ export default {
     alert("Account no exist!")
   });
   },
-  getBill(bill_id,i){
-    var index=i
-   axios.get('http://localhost:3001/api/bill/?_id='+bill_id,{
-   })
-  .then(function (response) {
-    console.log(response);
-    if(response.statusText=="OK")
-    {
-        sessionStorage.setItem('billName'+index,response.data.name)
-    }
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-  },
-  getMember(member_id,i){
-    var index=i
-   axios.get('http://localhost:3001/api/user/?_id='+member_id,{
-   })
-  .then(function (response) {
-    console.log(response);
-    if(response.statusText=="OK")
-    {
-        sessionStorage.setItem('memberName'+index,response.data.email)
-    }
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-  },
   logIn(){
     this.checkAccount()
-    for(var i=0;i<sessionStorage.getItem("bill_length");){
-      this.getBill(sessionStorage.getItem("bill"+i),i)
-      i++;
-    }
-    for(var i=0;i<sessionStorage.getItem("member_length");){
-      this.getMember(sessionStorage.getItem("member"+i),i)
-      i++;
-    }
   }
   },
   data() {

@@ -36,7 +36,7 @@
     <el-input v-model="form3.name"></el-input>
   </el-form-item>
   <el-form-item>
-    <el-button type="primary" @click="onSubmit">Delete</el-button>
+    <el-button type="primary" @click="deleteBill()">Delete</el-button>
     <el-button>Cancel</el-button>
   </el-form-item>
 </el-form>
@@ -51,7 +51,7 @@
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="onSubmit">Create</el-button>
-    <el-button type="primary">Delete</el-button>
+    <el-button type="primary" @click="deleteMember()">Delete</el-button>
   </el-form-item>
 </el-form>
 </el-dialog>
@@ -61,9 +61,9 @@
     <el-table-column prop="members" align="center" label="Members">
     </el-table-column>
     <el-table-column fixed="right" label="Action" width="120">
-      <template>
+      <template #default="scope">
         <el-button
-          @click="Split()"
+          @click="deleteRow(scope.$index)"
           type="text"
           size="small"
         >
@@ -78,6 +78,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import Aside from "@/components/Aside";
 export default {
   created() {
@@ -89,13 +90,13 @@ export default {
   },
   data(){
     searchTable: ''
-    var bill=sessionStorage.getItem('billName0')+', '
+    var bill=sessionStorage.getItem('bill0')+', '
     for(var i=1;i<sessionStorage.getItem('bill_length');i++){
-      bill=bill+sessionStorage.getItem('billName'+i)+', ';
+      bill=bill+sessionStorage.getItem('bill'+i)+', ';
     }
-    var member=sessionStorage.getItem('memberName0')+', '
+    var member=sessionStorage.getItem('member0')+', '
     for(var i=1;i<sessionStorage.getItem('member_length');i++){
-      member=member+sessionStorage.getItem('memberName'+i)+', ';
+      member=member+sessionStorage.getItem('member'+i)+', ';
     }
     return{
       form1: {
@@ -120,7 +121,63 @@ dialogDeleteBill: false,
 dialogUser: false,
     }
   },
+  methods:{
+    update(){
+   axios.post('http://localhost:3001/api/login',{email: sessionStorage.getItem('user_email')})
+
+  .then(function (response) {
+    if(response.statusText=="OK")
+    {
+      sessionStorage.setItem('bill_length',response.data[0].bills.length)
+      sessionStorage.setItem('member_length',response.data[0].members.length)
+      for (var i=0;i<response.data[0].bills.length;i++){
+        sessionStorage.setItem('bill'+i,response.data[0].bills[i]._id)
+      }
+      for (var i=0;i<response.data[0].members.length;i++){
+        sessionStorage.setItem('member'+i,response.data[0].members[i]._id)
+      }
+      window.location.reload()
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  },
+    deleteBill(){
+      axios.delete('http://localhost:3001/api/bill', {	
+  data: {
+    _id: sessionStorage.getItem(this.form3.name)
+  }
+}).then(res => {
+  console.log(res)
+  if(res.statusText=="OK"){
+    alert("Delete Sucessfully!")
+     this.update()
+  }
+})
+.catch(function (error) {
+    console.log(error);
+  });
+    },
+    deleteMember(){
+      axios.delete('http://localhost:3001/api/user', {	
+  data: {
+    _id: sessionStorage.getItem(this.form2.name)
+  }
+}).then(res => {
+  console.log(res)
+  if(res.statusText=="OK"){
+    alert("Delete Sucessfully!")
+    this.update()
+  }
+})
+.catch(function (error) {
+    console.log(error);
+  });
+    }
+  }
 }
+
 </script>
 
 <style>
