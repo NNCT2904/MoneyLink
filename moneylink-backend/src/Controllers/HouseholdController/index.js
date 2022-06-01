@@ -85,12 +85,12 @@ const addBill = async (req, res) => {
   if (!name || !amount || !householdId || !userId) return res.status(400).json({ error: 'Missing parameter (s)' });
 
   const bill = new Bill({
-    User: userId,
+    user: userId,
     name,
     amount,
   });
 
-  var household = await Household.findById(householdId);
+  await bill.save();
 
   return await Household.findByIdAndUpdate(householdId, { $push: { bills: bill } }, { new: true })
     .populate({
