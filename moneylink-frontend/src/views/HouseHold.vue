@@ -230,7 +230,7 @@ dialogAddUser: false,
   });
     },
   splitBill(){
-    axios.get('http://localhost:3001/api/household/debtCalculate?_id=627cb619d58084c8474dfb57')
+    axios.get('http://localhost:3001/api/household/debtCalculate?_id='+sessionStorage.getItem('user_id'))
     .then(res=>{
       console.log(res)
       alert(res.data)
