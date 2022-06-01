@@ -38,7 +38,9 @@ export default {
     },
   methods:{
    CheckAccount(){
-   axios.post('http://localhost:3001/api/login',{email: this.form.email})
+   axios.post('http://localhost:3001/api/login',{
+     email: this.form.email
+     })
 
   .then(function (response) {
     console.log(response);
