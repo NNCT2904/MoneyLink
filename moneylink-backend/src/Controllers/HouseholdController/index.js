@@ -20,6 +20,17 @@ const findHousehold = async (req, res) => {
   if (!email) return res.status(400).json({ error: 'Missing parameter "email"' });
 
   return await Household.find({ email: email })
+    .populate({
+      path: 'bills',
+      populate: {
+        path: 'user',
+        select: { username: 1, _id: 1 },
+      },
+    })
+    .populate({
+      path: 'members',
+      select: { username: 1, _id: 1 },
+    })
     .then((household) => {
       if (!household) return res.status(404).json({ error: 'Household not found' });
       return res.status(200).json(household);
@@ -37,10 +48,13 @@ const getHousehold = async (req, res) => {
       path: 'bills',
       populate: {
         path: 'user',
-        select: { username: 1, _id: 0 },
+        select: { username: 1, _id: 1 },
       },
     })
-    .populate('members')
+    .populate({
+      path: 'members',
+      select: { username: 1, _id: 1 },
+    })
     .then((household) => {
       if (!household) return res.status(404).json({ error: 'Household not found' });
       return res.status(200).json(household);
@@ -56,6 +70,17 @@ const updateHousehold = async (req, res) => {
   await Household.findByIdAndUpdate(_id, req.body, { new: true });
 
   return await Household.findById(_id)
+    .populate({
+      path: 'bills',
+      populate: {
+        path: 'user',
+        select: { username: 1, _id: 1 },
+      },
+    })
+    .populate({
+      path: 'members',
+      select: { username: 1, _id: 1 },
+    })
     .then((household) => res.status(200).json(household))
     .catch((error) => res.status(400).json(error));
 };
@@ -76,6 +101,17 @@ const addMember = async (req, res) => {
   if (!householdId || !userId) return res.status(400).json({ error: 'Missing parameter (s)' });
 
   return await Household.findByIdAndUpdate(householdId, { $push: { members: userId } }, { new: true })
+    .populate({
+      path: 'bills',
+      populate: {
+        path: 'user',
+        select: { username: 1, _id: 1 },
+      },
+    })
+    .populate({
+      path: 'members',
+      select: { username: 1, _id: 1 },
+    })
     .then((household) => res.status(200).json(household))
     .catch((error) => res.status(400).json(error));
 };
@@ -98,8 +134,12 @@ const addBill = async (req, res) => {
       path: 'bills',
       populate: {
         path: 'user',
-        select: { username: 1 },
+        select: { username: 1, _id: 1 },
       },
+    })
+    .populate({
+      path: 'members',
+      select: { username: 1, _id: 1 },
     })
     .then((household) => res.status(200).json(household))
     .catch((error) => res.status(400).json(error));
