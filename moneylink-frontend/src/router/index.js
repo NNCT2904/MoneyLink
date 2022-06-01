@@ -12,7 +12,10 @@ const routes = [
     name:'SignUp',
     component: SignUp,
     meta:{
-      //isLogin: false
+
+      isLogin: false
+
+
     }
   },
   {
@@ -20,7 +23,9 @@ const routes = [
     name: 'LogIn',
     component: LogIn,
     meta:{
-      //isLogin: false
+
+      isLogin: false
+
     }
   },
   {
@@ -38,7 +43,9 @@ const routes = [
     name: 'HouseHold',
     component: HouseHold,
     meta:{
-      //isLogin: true
+
+      isLogin: true
+
     }
   },
   {
@@ -49,7 +56,9 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Groups.vue'),
     meta:{
-      //isLogin: true
+
+      isLogin: true
+
     }
   },
   {
@@ -60,7 +69,9 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Friends.vue'),
     meta:{
-      //isLogin: true
+
+      isLogin: true
+
     }
   }
 ]
