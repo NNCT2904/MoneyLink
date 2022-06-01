@@ -1,7 +1,9 @@
+
 import { createRouter, createWebHistory } from 'vue-router'
 import HouseHold from '../views/HouseHold.vue'
 import LogIn from '../views/LogIn.vue'
 import SignUp from '../views/SignUp.vue'
+import Home from '../views/Homepage.vue'
 
 const routes = [
   {
@@ -9,23 +11,35 @@ const routes = [
     name:'SignUp',
     component: SignUp,
     meta:{
+
       isLogin: false
+
+
+    }
+  },
+  {
+    path: '/Login',
+    name: 'LogIn',
+    component: LogIn,
+    meta:{
+
+      isLogin: false
+
     }
   },
   {
     path: '/',
-    name: 'LogIn',
-    component: LogIn,
-    meta:{
-      isLogin: false
-    }
+    name: 'Home',
+    component: Home
   },
   {
     path: '/household',
     name: 'HouseHold',
     component: HouseHold,
     meta:{
+
       isLogin: true
+
     }
   },
   {
@@ -36,7 +50,9 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Groups.vue'),
     meta:{
+
       isLogin: true
+
     }
   },
   {
@@ -47,7 +63,9 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Friends.vue'),
     meta:{
+
       isLogin: true
+
     }
   }
 ]
