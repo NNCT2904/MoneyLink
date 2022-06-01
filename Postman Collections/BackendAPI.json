@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "14936ff2-c14d-417a-9e92-109528c957d4",
+		"_postman_id": "8236460c-d780-4ee4-abd1-2e72e0d2c175",
 		"name": "Backend API",
 		"description": "This page contains documents for Money Link APIs for local development.\n\nFor more information, check out our git repository: [https://github.com/NNCT2904/MoneyLink](https://github.com/NNCT2904/MoneyLink)",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16215855"
 	},
 	"item": [
 		{
@@ -114,7 +115,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":  \"testemail@example.com\"\n}",
+							"raw": "{\n    \"email\":  \"HiAli@example.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -311,11 +312,18 @@
 				},
 				{
 					"name": "Find",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://localhost:3001/api/findhousehold/?email=tommy@tao.com",
+							"raw": "http://localhost:3001/api/findhousehold/?email=HiAli@example.com",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -329,7 +337,7 @@
 							"query": [
 								{
 									"key": "email",
-									"value": "tommy@tao.com"
+									"value": "HiAli@example.com"
 								}
 							]
 						},
@@ -341,15 +349,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"email\":  \"testemail@example.com\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "http://localhost:3001/api/findhousehold",
 									"protocol": "http",
@@ -488,7 +487,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_id\": \"6267753fd30b15eab31ae4db\"\n}",
+							"raw": "{\n    \"_id\": \"628ce26147213bdac3353769\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -496,7 +495,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3001/api/household",
+							"raw": "http://localhost:3001/api/household?_id=628ce26147213bdac3353769",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -505,6 +504,12 @@
 							"path": [
 								"api",
 								"household"
+							],
+							"query": [
+								{
+									"key": "_id",
+									"value": "628ce26147213bdac3353769"
+								}
 							]
 						}
 					},
@@ -514,15 +519,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"_id\": \"6267753fd30b15eab31ae4db\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "http://localhost:3001/api/household",
 									"protocol": "http",
@@ -589,7 +585,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n   \"_id\": \"6267753fd30b15eab31ae4db\",\n   \"name\": \"changed name\",\n   \"members\": [],\n    \"bills\": []\n}",
+							"raw": "{\n    \"_id\": \"628ce26147213bdac3353769\",\n    \"name\": \"HiAli\",\n    \"email\": \"HiAli@example.com\",\n    \"members\": [\n        {\n            \"_id\": \"628ce31547213bdac335376d\",\n            \"username\": \"Ali\",\n            \"email\": \"ali@example.com\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"629364a833778ba1d64b896a\",\n            \"username\": \"newuser\",\n            \"email\": \"newuser@example.com\",\n            \"__v\": 0\n        }\n    ],\n    \"bills\": [\n        {\n            \"_id\": \"6293668833778ba1d64b8972\",\n            \"name\": \"uber stuff\",\n            \"user\": \"629364a833778ba1d64b896a\",\n            \"amount\": 100,\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"6296c51213fd20806620b656\",\n            \"name\": \"new test bill\",\n            \"user\": \"629364a833778ba1d64b896a\",\n            \"amount\": 100,\n            \"__v\": 0\n        },\n        \"628ecee08ab57e406a277c3a\"\n    ],\n    \"__v\": 0\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -785,6 +781,165 @@
 							"body": "{\n    \"_id\": \"6268ed7e8b2e6327e48b0c58\",\n    \"name\": \"a name, delete later \",\n    \"members\": [],\n    \"bills\": [],\n    \"__v\": 0\n}"
 						}
 					]
+				},
+				{
+					"name": "Split",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"628ce26147213bdac3353769\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/household/split",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"household",
+								"split"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Member",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"householdId\": \"628ce26147213bdac3353769\",\n    \"userId\": \"6296d13050700685caf935b0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/household/addMember",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"household",
+								"addMember"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Member",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"householdId\": \"628ce26147213bdac3353769\",\n    \"userId\": \"6296d13050700685caf935b0\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3001/api/household/addMember",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3001",
+									"path": [
+										"api",
+										"household",
+										"addMember"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "242"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f2-/jv0kZhPac3UqSIZPCuS/vpZkL8\""
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 01 Jun 2022 02:39:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"628ce26147213bdac3353769\",\n    \"name\": \"HiAli\",\n    \"email\": \"HiAli@example.com\",\n    \"members\": [\n        \"628ce31547213bdac335376d\",\n        \"629364a833778ba1d64b896a\"\n    ],\n    \"bills\": [\n        \"6293668833778ba1d64b8972\",\n        \"6296c51213fd20806620b656\",\n        \"628ecee08ab57e406a277c3a\"\n    ],\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Add bill",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"householdId\": \"628ce26147213bdac3353769\",\n    \"userId\":\"6296d13050700685caf935b0\",\n    \"name\":\"This is another bill\",\n    \"amount\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/household/addBill",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"household",
+								"addBill"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "These Household APIs allow to manage household."
@@ -799,7 +954,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"test bill\",\n    \"amount\": 100\n}",
+							"raw": "{\n    \"user\": \"6296d13050700685caf935b0\",\n    \"name\": \"new kek bill\",\n    \"amount\": 50\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -929,15 +1084,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"_id\": \"62709c1018540c08c19146e4\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "http://localhost:3001/api/bill",
 									"protocol": "http",
@@ -1064,7 +1210,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_id\": \"62709c1018540c08c19146e4\",\n    \"name\": \"changed name\",\n    \"amount\": 200\n}",
+							"raw": "{\n    \"_id\": \"628ecee08ab57e406a277c3a\",\n    \"name\": \"changed name\",\n    \"amount\": 200\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1263,7 +1409,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"username\",\n    \"email\": \"email@example.com\"\n}",
+							"raw": "{\n    \"username\": \"third-user\",\n    \"email\": \"email@example.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1367,7 +1513,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_id\": \"62709ce818540c08c19146ea\"\n}",
+							"raw": "{\n    \"_id\": \"629364a833778ba1d64b896a\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1393,15 +1539,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"_id\": \"62709ce818540c08c19146ea\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "http://localhost:3001/api/user",
 									"protocol": "http",

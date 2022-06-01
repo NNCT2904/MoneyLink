@@ -15,6 +15,19 @@ let householdObject = {
   email: '',
 };
 
+let userObject = {
+  username: '',
+  email: '',
+  _id: '',
+};
+
+let billObject = {
+  name: '',
+  amount: 0,
+  _id: '',
+  user: userObject,
+};
+
 describe('Household controller test', () => {
   it('Should be able to create a household', (done) => {
     chai
@@ -66,6 +79,63 @@ describe('Household controller test', () => {
         expect(res).to.have.status(200);
         expect(res.body).to.have.property('name').eql('Updated household');
         done();
+      });
+  });
+
+  it('Should be able to add a memeber to household', (done) => {
+    chai
+      .request(url)
+      .post('/api/user')
+      .send({
+        username: 'testuserforhouseholdmocha',
+        email: 'testuserforhouseholdmocha',
+      })
+      .end((err, res) => {
+        userObject = res.body;
+        expect(res).to.have.status(201);
+        expect(res.body).to.have.property('username').eql('testuserforhouseholdmocha');
+        chai
+          .request(url)
+          .post('/api/household/addMember')
+          .send({
+            householdId: householdObject._id,
+            userId: userObject._id,
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(200);
+            expect(res.body).to.have.property('members');
+            done();
+          });
+      });
+  });
+
+  it('Should be able to add a bill to household', (done) => {
+    chai
+      .request(url)
+      .post('/api/bill')
+      .send({
+        name: 'test bill for mocha',
+        amount: 100,
+        user: userObject._id,
+      })
+      .end((err, res) => {
+        billObject = res.body;
+        expect(res).to.have.status(201);
+        expect(res.body).to.have.property('name').eql('test bill for mocha');
+        chai
+          .request(url)
+          .post('/api/household/addBill')
+          .send({
+            householdId: householdObject._id,
+            userId: userObject._id,
+            name: billObject.name,
+            amount: billObject.amount,
+          })
+          .end((err, res) => {
+            expect(res).to.have.status(200);
+            expect(res.body).to.have.property('bills');
+            done();
+          });
       });
   });
 
