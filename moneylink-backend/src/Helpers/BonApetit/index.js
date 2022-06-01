@@ -35,14 +35,14 @@ const bonApetit = (members, bills) => {
       y = j;
       v1 = A[x][y];
       v2 = A[y][x];
-      diff = v2 - v1;
+      diff = v1 - v2;
 
       if (diff === 0) {
-        result.push(`${members[x].username} and ${members[y].username} are equall`);
+        result.push(`${members[y].username} and ${members[x].username} are equall`);
       } else if (diff > 0) {
-        result.push(`${members[x].username} owes ${members[y].username}: ${diff}`);
-      } else {
         result.push(`${members[y].username} owes ${members[x].username}: ${diff}`);
+      } else {
+        result.push(`${members[x].username} owes ${members[y].username}: ${diff}`);
       }
     }
   }
