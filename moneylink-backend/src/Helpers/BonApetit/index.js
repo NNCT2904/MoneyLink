@@ -1,6 +1,11 @@
 const bonApetit = (members, bills) => {
   var result = [];
 
+  if (members.length === 0 || bills.length === 0) {
+    result = ['No members or bills'];
+    return result;
+  }
+
   var A = Array(members.length)
     .fill(0)
     .map((x) => Array(members.length).fill(0));
