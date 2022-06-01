@@ -8,10 +8,11 @@
       <el-button type="primary" style="margin: 5px">Search</el-button>
       <el-button type="primary" @click="dialogBill = true" class="addBtn">Add Bill</el-button>
       <el-button type="primary" @click="dialogDeleteBill = true" class="addBtn">Delete Bill</el-button>
-      <el-button type="primary" @click="dialogUser = true" class="addBtn">Edit Members</el-button>
+      <el-button type="primary" @click="dialogAddUser = true" class="addBtn">Add Members</el-button>
+      <el-button type="primary" @click="dialogUser = true" class="addBtn">Delete Members</el-button>
     </div>
     <el-dialog
-  title="Add Bill"
+  title="Delete Bill"
   v-model="dialogBill"
   width="30%">
   <el-form ref="form1" :model="form1" label-width="120px">
@@ -21,9 +22,11 @@
   <el-form-item label="Amount">
     <el-input v-model="form1.amount"></el-input>
   </el-form-item>
+  <el-form-item label="User">
+    <el-input v-model="form1.user"></el-input>
+  </el-form-item>
   <el-form-item>
-    <el-button type="primary" @click="onSubmit">Create</el-button>
-    <el-button>Cancel</el-button>
+    <el-button type="primary" @click="createBill()">Create</el-button>
   </el-form-item>
 </el-form>
 </el-dialog>
@@ -37,12 +40,11 @@
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="deleteBill()">Delete</el-button>
-    <el-button>Cancel</el-button>
   </el-form-item>
 </el-form>
 </el-dialog>
 <el-dialog
-  title="Edit Members"
+  title="Delete Members"
   v-model="dialogUser"
   width="30%">
   <el-form ref="form2" :model="form2" label-width="120px">
@@ -50,8 +52,23 @@
     <el-input v-model="form2.name"></el-input>
   </el-form-item>
   <el-form-item>
-    <el-button type="primary" @click="onSubmit">Create</el-button>
     <el-button type="primary" @click="deleteMember()">Delete</el-button>
+  </el-form-item>
+</el-form>
+</el-dialog>
+<el-dialog
+  title="Add Members"
+  v-model="dialogAddUser"
+  width="30%">
+  <el-form ref="form4" :model="form4" label-width="120px">
+  <el-form-item label="Name">
+    <el-input v-model="form4.name"></el-input>
+  </el-form-item>
+  <el-form-item label="Email">
+    <el-input v-model="form4.email"></el-input>
+  </el-form-item>
+  <el-form-item>
+    <el-button type="primary" @click="addMember()">Add</el-button>
   </el-form-item>
 </el-form>
 </el-dialog>
@@ -102,12 +119,17 @@ export default {
       form1: {
           name: '',
           amount: '',
+          user:'',
         },
       form2: {
           name: '',
         },
       form3: {
           name: '',
+        },
+      form4: {
+          name: '',
+          email:'',
         },
       tableData:[
   {
@@ -119,6 +141,7 @@ export default {
 dialogBill: false,
 dialogDeleteBill: false,
 dialogUser: false,
+dialogAddUser: false,
     }
   },
   methods:{
@@ -143,12 +166,25 @@ dialogUser: false,
     console.log(error);
   });
   },
+    createBill(){
+      axios.post('http://localhost:3001/api/household/addbill',{userId:sessionStorage.getItem(this.form1.user),householdId:sessionStorage.getItem('user_id'),name:this.form1.name,amount:this.form1.amount})
+      .then(res => {
+  console.log(res)
+  if(res.statusText=="OK"){
+    alert("Created Sucessfully!")
+    this.update()
+  }
+})
+.catch(function (error) {
+    console.log(error);
+  });
+    },
     deleteBill(){
       axios.delete('http://localhost:3001/api/bill', {	
   data: {
     _id: sessionStorage.getItem(this.form3.name)
-  }
-}).then(res => {
+  }})
+.then(res => {
   console.log(res)
   if(res.statusText=="OK"){
     alert("Delete Sucessfully!")
@@ -159,6 +195,7 @@ dialogUser: false,
     console.log(error);
   });
     },
+    
     deleteMember(){
       axios.delete('http://localhost:3001/api/user', {	
   data: {
@@ -174,9 +211,29 @@ dialogUser: false,
 .catch(function (error) {
     console.log(error);
   });
-    }
+    },
+  addMember(){
+      axios.post('http://localhost:3001/api/user',{username:this.form4.name,email:this.form4.email})
+      .then(res => {
+  console.log(res)
+  if(res.statusText=="Created"){
+    axios.post('http://localhost:3001/api/household/addMember',{householdId:sessionStorage.getItem('user_id'),userId:res.data._id})
+    .then(res =>{
+      console.log(res)
+      if(res.statusText=="OK"){
+        alert('Add successfully!')
+        this.update()
+      }
+    })
+  }
+})
+.catch(function (error) {
+    console.log(error);
+  });
+    },
   }
 }
+
 
 </script>
 

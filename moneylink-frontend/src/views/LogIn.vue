@@ -50,7 +50,7 @@ export default {
         sessionStorage.setItem('member'+i,response.data[0].members[i]._id)
       }
       sessionStorage.setItem('token',true)
-      window.location.href="/household"
+      //window.location.href="/household"
 
     }
   })
