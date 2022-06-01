@@ -16,20 +16,6 @@
             <el-icon><UserFilled /></el-icon>
             <span>Friends</span>
           </el-menu-item>
-          <el-sub-menu index="test">
-            <template #title>
-              <el-icon><setting /><Menu /></el-icon>test
-            </template>
-            <el-sub-menu index="Group 1">
-              <template #title>Group 1</template>
-              <el-menu-item index="3-1">GroupOption 1</el-menu-item>
-              <el-menu-item index="3-2">GroupOption 2</el-menu-item>
-            </el-sub-menu>
-            <el-sub-menu index="Group 2">
-              <template #title>Group 2</template>
-              <el-menu-item index="3-3">GroupOption 3</el-menu-item>
-            </el-sub-menu>
-          </el-sub-menu>
         </el-menu>
     </div>
 </template>

@@ -20,14 +20,15 @@
       <el-table-column label="No." type="index"  width="80px" align="center"></el-table-column>
       <el-table-column prop="Name" label="Group name"></el-table-column>
       <el-table-column prop="Author" label="Group Organizer"></el-table-column>
-      <el-table-column prop="Type" label="Type"></el-table-column>
+      <el-table-column prop="Type" label="Member"></el-table-column>
       <el-table-column prop="Count" label="Amount"></el-table-column>
       <el-table-column >
        <!--<template slot-scope="scope">
-          <el-button type="primary" label="Edit" icon="el-icon-edit"  @click="editBook(scope.row)">Edit</el-button>
-        </template> -->
+          <el-button type="primary" label="Edit"  @click="editBook(scope.row, scope)">Edit</el-button> 
+        </template>-->
         <template v-slot="scope">
-          <el-button type="danger" v-if="!scope.row.editing" icon="el-icon-delete"  @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
+        
+          <el-button type="danger" v-if="!scope.row.editing"  @click="handleDelete(scope.$index, scope.row)">Delete</el-button>
         </template> 
       </el-table-column>
     </el-table>
@@ -54,7 +55,7 @@
         <el-form-item label="Organizer" style="width:300px">
           <el-input v-model="book.Author" placeholder="Please enter Group Organizer"></el-input>
         </el-form-item>
-        <el-form-item label="Type" style="width:300px">
+        <el-form-item label="Member" style="width:300px">
           <el-input v-model="book.Type" placeholder="Please enter Group Type"></el-input>
         </el-form-item>
         <el-form-item label="Amount" style="width:300px">
@@ -66,7 +67,7 @@
         <el-button type="primary" @click="dialogVisible = false">Cancel</el-button>
       </span>
     </el-dialog>
-    <!--<el-dialog
+    <el-dialog
       title="Tpis"
       
       v-model="dialog2Visible"
@@ -77,7 +78,7 @@
         <el-button @click="handleDel">Submit</el-button>
         <el-button type="primary" @click="dialog2Visible = false">Cancel</el-button>
       </span>
-    </el-dialog>-->
+    </el-dialog>
   </div>
   </div>
   </div>
@@ -108,35 +109,30 @@ export default {
       curId: "",
       bookList:[
   {
-    Name: 'aaa',
+    Name: 'Coles Uid111',
     Author: 'me',
     Type: 'Coles Uid111',
     Count: '10',
   },
   {
-    Name: 'aaa',
+    Name: 'BigW Uid112',
     Author: 'me',
     Type: 'Coles Uid111',
     Count: '10',
   },
   {
-    Name: 'aaa',
+    Name: 'Kmart Uid113',
     Author: 'me',
     Type: 'Coles Uid111',
     Count: '10',
   },
   {
-    Name: 'aaa',
+    Name: 'Myki Uid114',
     Author: 'me',
     Type: 'Coles Uid111',
     Count: '10',
   },
-  {
-    Name: 'aaa',
-    Author: 'me',
-    Type: 'Coles Uid111',
-    Count: '10',
-  },
+  
   
 ],
 
@@ -154,7 +150,7 @@ export default {
       Type: this.book.Type,
       Count: this.book.Count,
       });
-
+      this.dialogVisible = false;
     },
     delBook(row) {
       this.addFlag = false;
@@ -238,10 +234,9 @@ export default {
     //  }
   //  },
     
-    editBook(row) {
-      this.book = row;
-      this.dialogVisible = true;
-      this.addFlag = false;
+    editBook(index, row) {
+      
+      row.iseditor = true;
     }
 
 }
