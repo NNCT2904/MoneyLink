@@ -1,4 +1,5 @@
 const { Household, Bill, User } = require('../../Models');
+const { bonApetit } = require('../../Helpers');
 
 const createHousehold = async (req, res) => {
   const { name, email } = req.body;
@@ -85,12 +86,12 @@ const addBill = async (req, res) => {
   if (!name || !amount || !householdId || !userId) return res.status(400).json({ error: 'Missing parameter (s)' });
 
   const bill = new Bill({
-    User: userId,
+    user: userId,
     name,
     amount,
   });
 
-  var household = await Household.findById(householdId);
+  await bill.save();
 
   return await Household.findByIdAndUpdate(householdId, { $push: { bills: bill } }, { new: true })
     .populate({
@@ -114,6 +115,28 @@ const resetHousehold = async (req, res) => {
     .catch((error) => res.status(400).json(error));
 };
 
+const debtCalculate = async (req, res) => {
+  const { _id } = req.query._id ? req.query : req.body;
+
+  if (!_id) return res.status(400).json({ error: 'Missing parameter "id"' });
+
+  const { members, bills } = await Household.findById(_id)
+    .populate({
+      path: 'bills',
+      populate: {
+        path: 'user',
+        select: { username: 1, _id: 0 },
+      },
+    })
+    .populate({
+      path: 'members',
+      select: { username: 1, _id: 0 },
+    });
+
+  const result = bonApetit(members, bills);
+  return res.status(200).json(result);
+};
+
 module.exports = {
   createHousehold,
   findHousehold,
@@ -123,4 +146,5 @@ module.exports = {
   addMember,
   addBill,
   resetHousehold,
+  debtCalculate,
 };
