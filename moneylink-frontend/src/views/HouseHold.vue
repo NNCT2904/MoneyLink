@@ -3,7 +3,7 @@
   <div id="Aside">
     <Aside />
     <div style="width:100%; height:100%">
-    <div style="margin: 10px; margin-left:30%">
+    <div style="margin: 10px; margin-left:5%">
       <el-input v-model="searchTable" placeholder="Enter your key words" style="width:20%"></el-input>
       <el-button type="primary" style="margin: 5px">Search</el-button>
       <el-button type="primary" @click="dialogBill = true" class="addBtn">Add Bill</el-button>
@@ -78,12 +78,10 @@
   </el-form-item>
 </el-form>
 </el-dialog>
-    <el-table :data="tableData" stripe style="width: 100%">
-    <el-table-column prop="household" align="center" label="Household" width="250"/>
-    <el-table-column prop="bill" align="center" label="Bill"/>
-    <el-table-column prop="members" align="center" label="Members">
-    </el-table-column>
-    <el-table-column fixed="right" label="Action" width="120">
+    <el-table :data="tableData" stripe style="width: 100%" >
+    <el-table-column prop="bill" align="center" label="Bill Name" />
+    <el-table-column prop="members" align="center" label="Members Name" />
+    <el-table-column fixed="right" label="Action">
         <el-button
           @click="splitBill()"
           type="text"
@@ -162,6 +160,12 @@ dialogAddUser: false,
       }
       for (var i=0;i<response.data[0].members.length;i++){
         sessionStorage.setItem('member'+i,response.data[0].members[i]._id)
+      }
+      for (var i=0;i<response.data[0].bills.length;i++){
+        sessionStorage.setItem('bill'+i+'Name',response.data[0].bills[i].name)
+      }
+      for (var i=0;i<response.data[0].members.length;i++){
+        sessionStorage.setItem('member'+i+'Name',response.data[0].members[i].username)
       }
       window.location.reload()
     }
@@ -251,4 +255,5 @@ dialogAddUser: false,
 </script>
 
 <style>
+
 </style>

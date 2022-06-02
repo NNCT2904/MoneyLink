@@ -44,13 +44,15 @@ const bonApetit = (members, bills) => {
 
       if (diff === 0) {
         result.push(`${members[y].username} and ${members[x].username} are equall`);
-      } else if (diff > 0) {
-        result.push(`${members[y].username} owes ${members[x].username}: ${diff}`);
+      } else if (diff < 0) {
+        result.push(`${members[x].username} owes ${members[y].username}: ${Math.abs(diff)}`);
       } else {
-        result.push(`${members[x].username} owes ${members[y].username}: ${diff}`);
+        result.push(`${members[y].username} owes ${members[x].username}: ${diff}`);
       }
     }
   }
+
+  console.table(A);
   return result;
 };
 
