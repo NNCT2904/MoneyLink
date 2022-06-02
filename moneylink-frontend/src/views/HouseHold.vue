@@ -3,27 +3,36 @@
   <div id="Aside">
     <Aside />
     <div style="width:100%; height:100%">
-    <div style="margin: 10px; margin-left:30%">
+    <div style="margin: 10px; margin-left:5%">
       <el-input v-model="searchTable" placeholder="Enter your key words" style="width:20%"></el-input>
       <el-button type="primary" style="margin: 5px">Search</el-button>
       <el-button type="primary" @click="dialogBill = true" class="addBtn">Add Bill</el-button>
       <el-button type="primary" @click="dialogDeleteBill = true" class="addBtn">Delete Bill</el-button>
-      <el-button type="primary" @click="dialogUser = true" class="addBtn">Edit Members</el-button>
+      <el-button type="primary" @click="dialogAddUser = true" class="addBtn">Add Members</el-button>
+      <el-button type="primary" @click="dialogUser = true" class="addBtn">Delete Members</el-button>
     </div>
+    <el-dialog
+  title="Split Result"
+  v-model="splitResult"
+  width="30%">
+  <h2>{{}}</h2>
+</el-dialog>
     <el-dialog
   title="Add Bill"
   v-model="dialogBill"
   width="30%">
   <el-form ref="form1" :model="form1" label-width="120px">
   <el-form-item label="Name">
-    <el-input v-model="form1.name"></el-input>
+    <el-input v-model="form1.name" placeholder="any"></el-input>
   </el-form-item>
   <el-form-item label="Amount">
-    <el-input v-model="form1.amount"></el-input>
+    <el-input v-model="form1.amount" placeholder="any"></el-input>
+  </el-form-item>
+  <el-form-item label="User to Pay">
+    <el-input v-model="form1.user" placeholder="member0"></el-input>
   </el-form-item>
   <el-form-item>
-    <el-button type="primary" @click="onSubmit">Create</el-button>
-    <el-button>Cancel</el-button>
+    <el-button type="primary" @click="createBill()">Create</el-button>
   </el-form-item>
 </el-form>
 </el-dialog>
@@ -33,60 +42,55 @@
   width="30%">
   <el-form ref="form3" :model="form3" label-width="120px">
   <el-form-item label="Name">
-    <el-input v-model="form3.name"></el-input>
+    <el-input v-model="form3.name" placeholder="bill0"></el-input>
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="deleteBill()">Delete</el-button>
-    <el-button>Cancel</el-button>
   </el-form-item>
 </el-form>
 </el-dialog>
 <el-dialog
-  title="Edit Members"
+  title="Delete Members"
   v-model="dialogUser"
   width="30%">
   <el-form ref="form2" :model="form2" label-width="120px">
   <el-form-item label="Name">
-    <el-input v-model="form2.name"></el-input>
+    <el-input v-model="form2.name" placeholder="member0"></el-input>
   </el-form-item>
   <el-form-item>
-    <el-button type="primary" @click="onSubmit">Create</el-button>
     <el-button type="primary" @click="deleteMember()">Delete</el-button>
   </el-form-item>
 </el-form>
 </el-dialog>
-    <el-table :data="tableData" stripe style="width: 100%">
-    <el-table-column prop="household" align="center" label="Household" width="250"/>
-    <el-table-column prop="bill" align="center" label="Bill"/>
-    <el-table-column prop="members" align="center" label="Members">
-    </el-table-column>
-    <el-table-column fixed="right" label="Action" width="120">
-      <template #default="scope">
+<el-dialog
+  title="Add Members"
+  v-model="dialogAddUser"
+  width="30%">
+  <el-form ref="form4" :model="form4" label-width="120px">
+  <el-form-item label="Name">
+    <el-input v-model="form4.name" placeholder="any"></el-input>
+  </el-form-item>
+  <el-form-item label="Email">
+    <el-input v-model="form4.email" placeholder="any"></el-input>
+  </el-form-item>
+  <el-form-item>
+    <el-button type="primary" @click="addMember()">Add</el-button>
+  </el-form-item>
+</el-form>
+</el-dialog>
+    <el-table :data="tableData" stripe style="width: 100%" >
+    <el-table-column prop="bill" align="center" label="Bill Name" />
+    <el-table-column prop="members" align="center" label="Members Name" />
+    <el-table-column fixed="right" label="Action">
         <el-button
-          @click="deleteRow(scope.$index)"
+          @click="splitBill()"
           type="text"
           size="small"
         >
         Split the bill
         </el-button>
-      </template>
     </el-table-column>
   </el-table>
-
-
-
- <el-table :data="tableRealData" stripe style="width: 100%">
-    <el-table-column prop="Values" align="center" label="Values" width="250"/>
-    <v-divider width="100"/>
-   <el-table-column prop="Users" align="center" label="Users" width="250"/>
-   <v-divider width="100"/>
-       <el-table-column prop="Bills" align="center" label="Bills" width="250"/>
-  
-  </el-table>
-
-
-
-
   </div>
   </div>
   </div>
@@ -105,60 +109,19 @@ export default {
   },
   data(){
     searchTable: ''
-    var bill=sessionStorage.getItem('bill0')+', '
+    var bill="bill0: "+sessionStorage.getItem('bill0Name')+', '
     for(var i=1;i<sessionStorage.getItem('bill_length');i++){
-      bill=bill+sessionStorage.getItem('bill'+i)+', ';
+      bill=bill+"bill"+i+": "+sessionStorage.getItem('bill'+i+"Name")+', ';
     }
-
-  var idT  =  sessionStorage.getItem('user_id');
-console.log(idT);
-idT='627cb619d58084c8474dfb57';
-
-
-var thisX = [];
-
-axios.get('http://localhost:3001/api/household/debtCalculate/?_id='+ idT,{
-   })
-  .then(function (response) {
-
-  thisX = response.data;
- // console.log(response.data)
-
-
-
-
-  sessionStorage.setItem("thisX", response.data);
-
-
-
-
-
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-
-
-
-    var member=sessionStorage.getItem('member0')+', '
+    var member="member0: "+sessionStorage.getItem('member0Name')+', '
     for(var i=1;i<sessionStorage.getItem('member_length');i++){
-      member=member+sessionStorage.getItem('member'+i)+', ';
-
-
-
-
-
-var obj = sessionStorage.getItem('thisX');
-console.log(obj)
-
-
- 
-
+      member=member+"member"+i+": "+sessionStorage.getItem('member'+i+"Name")+', ';
     }
     return{
       form1: {
           name: '',
           amount: '',
+          user:'',
         },
       form2: {
           name: '',
@@ -166,55 +129,22 @@ console.log(obj)
       form3: {
           name: '',
         },
+      form4: {
+          name: '',
+          email:'',
+        },
       tableData:[
   {
     household: sessionStorage.getItem('user_email'),
     bill: bill,
     members: member,
-  }
-
+  },
 ],
-
-
-tableRealData:[
-
-{
-
-
-
-
-  Values:   sessionStorage.getItem('thisX'),
-  Users: '',
-  Bills : '',
-
-
-
-},
-
-{
-
-
-
-
-  Values:   sessionStorage.getItem('thisX'),
-  Users: '',
-  Bills : '',
-
-
-
-},
-
-
-]
-,
-
 dialogBill: false,
 dialogDeleteBill: false,
 dialogUser: false,
+dialogAddUser: false,
     }
-
-
-
   },
   methods:{
     update(){
@@ -231,6 +161,12 @@ dialogUser: false,
       for (var i=0;i<response.data[0].members.length;i++){
         sessionStorage.setItem('member'+i,response.data[0].members[i]._id)
       }
+      for (var i=0;i<response.data[0].bills.length;i++){
+        sessionStorage.setItem('bill'+i+'Name',response.data[0].bills[i].name)
+      }
+      for (var i=0;i<response.data[0].members.length;i++){
+        sessionStorage.setItem('member'+i+'Name',response.data[0].members[i].username)
+      }
       window.location.reload()
     }
   })
@@ -238,12 +174,25 @@ dialogUser: false,
     console.log(error);
   });
   },
+    createBill(){
+      axios.post('http://localhost:3001/api/household/addbill',{userId:sessionStorage.getItem(this.form1.user),householdId:sessionStorage.getItem('user_id'),name:this.form1.name,amount:this.form1.amount})
+      .then(res => {
+  console.log(res)
+  if(res.statusText=="OK"){
+    alert("Created Sucessfully!")
+    this.update()
+  }
+})
+.catch(function (error) {
+    console.log(error);
+  });
+    },
     deleteBill(){
-      axios.delete('http://localhost:3001/api/bill', {  
+      axios.delete('http://localhost:3001/api/bill', {	
   data: {
     _id: sessionStorage.getItem(this.form3.name)
-  }
-}).then(res => {
+  }})
+.then(res => {
   console.log(res)
   if(res.statusText=="OK"){
     alert("Delete Sucessfully!")
@@ -254,8 +203,9 @@ dialogUser: false,
     console.log(error);
   });
     },
+    
     deleteMember(){
-      axios.delete('http://localhost:3001/api/user', {  
+      axios.delete('http://localhost:3001/api/user', {	
   data: {
     _id: sessionStorage.getItem(this.form2.name)
   }
@@ -269,11 +219,41 @@ dialogUser: false,
 .catch(function (error) {
     console.log(error);
   });
-    }
+    },
+  addMember(){
+      axios.post('http://localhost:3001/api/user',{username:this.form4.name,email:this.form4.email})
+      .then(res => {
+  console.log(res)
+  if(res.statusText=="Created"){
+    axios.post('http://localhost:3001/api/household/addMember',{householdId:sessionStorage.getItem('user_id'),userId:res.data._id})
+    .then(res =>{
+      console.log(res)
+      if(res.statusText=="OK"){
+        alert('Add successfully!')
+        this.update()
+      }
+    })
+  }
+})
+.catch(function (error) {
+    console.log(error);
+  });
+    },
+  splitBill(){
+    axios.get('http://localhost:3001/api/household/debtCalculate?_id='+sessionStorage.getItem('user_id'))
+    .then(res=>{
+      console.log(res)
+      sessionStorage.setItem('result_length',res.data.length)
+      sessionStorage.setItem('result',res.data)
+      alert(res.data)
+    })
+  },
   }
 }
+
 
 </script>
 
 <style>
+
 </style>

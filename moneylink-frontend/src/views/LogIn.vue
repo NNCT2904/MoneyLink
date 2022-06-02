@@ -44,7 +44,13 @@ export default {
       sessionStorage.setItem('bill_length',response.data[0].bills.length)
       sessionStorage.setItem('member_length',response.data[0].members.length)
       for (var i=0;i<response.data[0].bills.length;i++){
+        sessionStorage.setItem('bill'+i+'Name',response.data[0].bills[i].name)
+      }
+      for (var i=0;i<response.data[0].bills.length;i++){
         sessionStorage.setItem('bill'+i,response.data[0].bills[i]._id)
+      }
+      for (var i=0;i<response.data[0].members.length;i++){
+        sessionStorage.setItem('member'+i+'Name',response.data[0].members[i].username)
       }
       for (var i=0;i<response.data[0].members.length;i++){
         sessionStorage.setItem('member'+i,response.data[0].members[i]._id)
