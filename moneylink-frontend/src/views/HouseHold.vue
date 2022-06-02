@@ -12,6 +12,12 @@
       <el-button type="primary" @click="dialogUser = true" class="addBtn">Delete Members</el-button>
     </div>
     <el-dialog
+  title="Split Result"
+  v-model="splitResult"
+  width="30%">
+  <h2>{{}}</h2>
+</el-dialog>
+    <el-dialog
   title="Add Bill"
   v-model="dialogBill"
   width="30%">
@@ -105,13 +111,13 @@ export default {
   },
   data(){
     searchTable: ''
-    var bill="bill0: "+sessionStorage.getItem('bill0')+', '
+    var bill="bill0: "+sessionStorage.getItem('bill0Name')+', '
     for(var i=1;i<sessionStorage.getItem('bill_length');i++){
-      bill=bill+"bill"+i+": "+sessionStorage.getItem('bill'+i)+', ';
+      bill=bill+"bill"+i+": "+sessionStorage.getItem('bill'+i+"Name")+', ';
     }
-    var member="member0: "+sessionStorage.getItem('member0')+', '
+    var member="member0: "+sessionStorage.getItem('member0Name')+', '
     for(var i=1;i<sessionStorage.getItem('member_length');i++){
-      member=member+"member"+i+": "+sessionStorage.getItem('member'+i)+', ';
+      member=member+"member"+i+": "+sessionStorage.getItem('member'+i+"Name")+', ';
     }
     return{
       form1: {
@@ -233,9 +239,11 @@ dialogAddUser: false,
     axios.get('http://localhost:3001/api/household/debtCalculate?_id='+sessionStorage.getItem('user_id'))
     .then(res=>{
       console.log(res)
+      sessionStorage.setItem('result_length',res.data.length)
+      sessionStorage.setItem('result',res.data)
       alert(res.data)
     })
-  }
+  },
   }
 }
 
