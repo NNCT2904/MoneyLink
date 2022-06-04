@@ -12,12 +12,6 @@
       <el-button type="primary" @click="dialogUser = true" class="addBtn">Delete Members</el-button>
     </div>
     <el-dialog
-  title="Split Result"
-  v-model="splitResult"
-  width="30%">
-  <h2>{{}}</h2>
-</el-dialog>
-    <el-dialog
   title="Add Bill"
   v-model="dialogBill"
   width="30%">
@@ -99,6 +93,8 @@
 <script>
 import axios from "axios";
 import Aside from "@/components/Aside";
+import emailjs from '@emailjs/browser';
+import apiKeys from '../../.env';
 export default {
   created() {
     this.$store.state.ifFrameShow=true
@@ -167,7 +163,9 @@ dialogAddUser: false,
       for (var i=0;i<response.data[0].members.length;i++){
         sessionStorage.setItem('member'+i+'Name',response.data[0].members[i].username)
       }
-      window.location.reload()
+      setTimeout(function(){
+        window.location.reload()
+      },1500)
     }
   })
   .catch(function (error) {
@@ -179,6 +177,7 @@ dialogAddUser: false,
       .then(res => {
   console.log(res)
   if(res.statusText=="OK"){
+    this.sendEmail('You have successfully created the bill '+this.form1.name+" for "+this.form1.amount+" dollars under user: "+sessionStorage.getItem(this.form1.user+'Name'),sessionStorage.getItem('user_name'))
     alert("Created Sucessfully!")
     this.update()
   }
@@ -195,6 +194,7 @@ dialogAddUser: false,
 .then(res => {
   console.log(res)
   if(res.statusText=="OK"){
+    this.sendEmail('You have successfully deleted the bill '+sessionStorage.getItem(this.form3.name+'Name'),sessionStorage.getItem('user_name'))
     alert("Delete Sucessfully!")
      this.update()
   }
@@ -212,6 +212,7 @@ dialogAddUser: false,
 }).then(res => {
   console.log(res)
   if(res.statusText=="OK"){
+    this.sendEmail('You have successfully deleted the member '+sessionStorage.getItem(this.form2.name+'Name'),sessionStorage.getItem('user_name'))
     alert("Delete Sucessfully!")
     this.update()
   }
@@ -229,6 +230,7 @@ dialogAddUser: false,
     .then(res =>{
       console.log(res)
       if(res.statusText=="OK"){
+        this.sendEmail('You have successfully added the member '+this.form4.name+" with email "+this.form4.email,sessionStorage.getItem('user_name'))
         alert('Add successfully!')
         this.update()
       }
@@ -243,11 +245,23 @@ dialogAddUser: false,
     axios.get('http://localhost:3001/api/household/debtCalculate?_id='+sessionStorage.getItem('user_id'))
     .then(res=>{
       console.log(res)
-      sessionStorage.setItem('result_length',res.data.length)
       sessionStorage.setItem('result',res.data)
       alert(res.data)
     })
   },
+  sendEmail(message,name){
+    var templateParams = {
+    to_name: name,
+    message: message,
+};
+ 
+emailjs.send(apiKeys.SERVICE_ID, apiKeys.TEMPLATE_ID, templateParams,apiKeys.USER_ID)
+    .then(function(response) {
+       console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+       console.log('FAILED...', error);
+    });
+  }
   }
 }
 
