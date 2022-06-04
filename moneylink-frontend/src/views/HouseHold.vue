@@ -105,12 +105,12 @@ export default {
   },
   data(){
     searchTable: ''
-    var bill="bill0: "+sessionStorage.getItem('bill0Name')+', '
-    for(var i=1;i<sessionStorage.getItem('bill_length');i++){
+    var bill=""
+    for(var i=0;i<sessionStorage.getItem('bill_length');i++){
       bill=bill+"bill"+i+": "+sessionStorage.getItem('bill'+i+"Name")+', ';
     }
-    var member="member0: "+sessionStorage.getItem('member0Name')+', '
-    for(var i=1;i<sessionStorage.getItem('member_length');i++){
+    var member=""
+    for(var i=0;i<sessionStorage.getItem('member_length');i++){
       member=member+"member"+i+": "+sessionStorage.getItem('member'+i+"Name")+', ';
     }
     return{
@@ -177,7 +177,7 @@ dialogAddUser: false,
       .then(res => {
   console.log(res)
   if(res.statusText=="OK"){
-    this.sendEmail('You have successfully created the bill '+this.form1.name+" for "+this.form1.amount+" dollars under user: "+sessionStorage.getItem(this.form1.user+'Name'),sessionStorage.getItem('user_name'))
+    this.sendEmail('You have successfully created the bill '+this.form1.name+" for "+this.form1.amount+" dollars under user: "+sessionStorage.getItem(this.form1.user+'Name'),sessionStorage.getItem('user_name'),sessionStorage.getItem('user_email'))
     alert("Created Sucessfully!")
     this.update()
   }
@@ -194,7 +194,7 @@ dialogAddUser: false,
 .then(res => {
   console.log(res)
   if(res.statusText=="OK"){
-    this.sendEmail('You have successfully deleted the bill '+sessionStorage.getItem(this.form3.name+'Name'),sessionStorage.getItem('user_name'))
+    this.sendEmail('You have successfully deleted the bill '+sessionStorage.getItem(this.form3.name+'Name'),sessionStorage.getItem('user_name'),sessionStorage.getItem('user_email'))
     alert("Delete Sucessfully!")
      this.update()
   }
@@ -212,7 +212,7 @@ dialogAddUser: false,
 }).then(res => {
   console.log(res)
   if(res.statusText=="OK"){
-    this.sendEmail('You have successfully deleted the member '+sessionStorage.getItem(this.form2.name+'Name'),sessionStorage.getItem('user_name'))
+    this.sendEmail('You have successfully deleted the member '+sessionStorage.getItem(this.form2.name+'Name'),sessionStorage.getItem('user_name'),sessionStorage.getItem('user_email'))
     alert("Delete Sucessfully!")
     this.update()
   }
@@ -230,7 +230,7 @@ dialogAddUser: false,
     .then(res =>{
       console.log(res)
       if(res.statusText=="OK"){
-        this.sendEmail('You have successfully added the member '+this.form4.name+" with email "+this.form4.email,sessionStorage.getItem('user_name'))
+        this.sendEmail('You have successfully added the member '+this.form4.name+" with email "+this.form4.email,sessionStorage.getItem('user_name'),sessionStorage.getItem('user_email'))
         alert('Add successfully!')
         this.update()
       }
@@ -249,10 +249,11 @@ dialogAddUser: false,
       alert(res.data)
     })
   },
-  sendEmail(message,name){
+  sendEmail(message,name,email){
     var templateParams = {
     to_name: name,
     message: message,
+    to_email:email,
 };
  
 emailjs.send(apiKeys.SERVICE_ID, apiKeys.TEMPLATE_ID, templateParams,apiKeys.USER_ID)
