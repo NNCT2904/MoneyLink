@@ -29,7 +29,7 @@ import axios from "axios";
 export default {
   name: "LogIn",
   methods:{
-   checkAccount(){
+   logIn(){
    axios.post('http://localhost:3001/api/login',{email: this.form.email})
 
   .then(function (response) {
@@ -37,7 +37,6 @@ export default {
     if(response.statusText=="OK")
     {
       alert("Log in successfully!")
-
       sessionStorage.setItem('user_name',response.data[0].name)
       sessionStorage.setItem('user_email',response.data[0].email)
       sessionStorage.setItem('user_id',response.data[0]._id)
@@ -62,12 +61,9 @@ export default {
   })
   .catch(function (error) {
     console.log(error);
-    alert("Account no exist!")
+    alert("Please try again!")
   });
   },
-  logIn(){
-    this.checkAccount()
-  }
   },
   data() {
       return {
