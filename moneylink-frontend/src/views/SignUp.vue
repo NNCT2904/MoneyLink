@@ -32,7 +32,7 @@
           </el-select>
         </el-form-item>
         <el-form-item>
-          <el-input v-model="form.email" class="login_input" id="login_email" placeholder="Email"></el-input>
+          <el-input v-model="form.email" class="login_input" id="login_email" placeholder="Please enter your real email to recieve notification"></el-input>
         </el-form-item>
         <el-form-item>
           <el-input v-model="form.repeated_email" class="login_input" id="repeated_email" placeholder="Please confirm your email"></el-input>

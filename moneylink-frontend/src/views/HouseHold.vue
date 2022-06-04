@@ -23,7 +23,7 @@
     <el-input v-model="form1.amount" placeholder="any"></el-input>
   </el-form-item>
   <el-form-item label="User to Pay">
-    <el-input v-model="form1.user" placeholder="member0"></el-input>
+    <el-input v-model="form1.user" placeholder="member0,1,2..."></el-input>
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="createBill()">Create</el-button>
@@ -36,7 +36,7 @@
   width="30%">
   <el-form ref="form3" :model="form3" label-width="120px">
   <el-form-item label="Name">
-    <el-input v-model="form3.name" placeholder="bill0"></el-input>
+    <el-input v-model="form3.name" placeholder="bill0,1,2..."></el-input>
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="deleteBill()">Delete</el-button>
@@ -49,7 +49,7 @@
   width="30%">
   <el-form ref="form2" :model="form2" label-width="120px">
   <el-form-item label="Name">
-    <el-input v-model="form2.name" placeholder="member0"></el-input>
+    <el-input v-model="form2.name" placeholder="member0,1,2..."></el-input>
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="deleteMember()">Delete</el-button>
@@ -173,6 +173,7 @@ dialogAddUser: false,
   });
   },
     createBill(){
+      if(sessionStorage.getItem('member_length')>0){
       axios.post('http://localhost:3001/api/household/addbill',{userId:sessionStorage.getItem(this.form1.user),householdId:sessionStorage.getItem('user_id'),name:this.form1.name,amount:this.form1.amount})
       .then(res => {
   console.log(res)
@@ -185,8 +186,13 @@ dialogAddUser: false,
 .catch(function (error) {
     console.log(error);
   });
+    }
+    else{
+      alert('Add a member first!')
+    }
     },
     deleteBill(){
+      if(sessionStorage.getItem('bill_length')>0){
       axios.delete('http://localhost:3001/api/bill', {	
   data: {
     _id: sessionStorage.getItem(this.form3.name)
@@ -202,9 +208,14 @@ dialogAddUser: false,
 .catch(function (error) {
     console.log(error);
   });
+    }
+    else{
+      alert('Create a bill first!')
+    }
     },
     
     deleteMember(){
+      if(sessionStorage.getItem('member_length')>0){
       axios.delete('http://localhost:3001/api/user', {	
   data: {
     _id: sessionStorage.getItem(this.form2.name)
@@ -220,6 +231,10 @@ dialogAddUser: false,
 .catch(function (error) {
     console.log(error);
   });
+    }
+    else{
+      alert('Add a member first!')
+    }
     },
   addMember(){
       axios.post('http://localhost:3001/api/user',{username:this.form4.name,email:this.form4.email})
