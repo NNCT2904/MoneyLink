@@ -26,13 +26,9 @@ Follow belows to install and launch the application in the localhost
 git clone git@github.com:NNCT2904/MoneyLink.git
 ```
 ## Create the config file
-After cloning the repository, create an `.env` file inside the `moneylick-backend` folder and filling the values:
-- `MONGODB_URI`: the connection string to MongoDB
-
-For example:
-```shell
-MONGODB_URI=YourConnectionStringHere
-```
+Download the zip file from `https://deakin365-my.sharepoint.com/:u:/g/personal/ncng_deakin_edu_au/EUZhXyhNBVNAmVReD-dW-swBDCVBxpTCuAyZvhJPoWHMZQ?e=uOPUFJ`
+Then copy the `.env` file from backend folder in zip file to the backend folder in the project.
+And copy the `.env` file from frontend folder in zip file to the frontend folder in the project.
 ## Install node dependencies
 This project involves a frontend and a backend running separately. 
 As a result, we need to install the dependencies for the two sub-projects.
