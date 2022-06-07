@@ -43,7 +43,7 @@
         <el-row justify="end">
           <el-form-item class="login_btn">
             <el-button  type="primary" round plain size="large" @click="SignUp()">Sgin Up</el-button>
-            <el-link id="signup_link" href="/" >Already have an account?</el-link>
+            <el-link id="signup_link" href="/Login" >Already have an account?</el-link>
           </el-form-item>
         </el-row>
       </el-form>
@@ -93,7 +93,7 @@ export default {
     }
     else{
       this.SendAccount()
-    this.$router.push('/')
+    this.$router.push('/Login')
     }
   }
     },
